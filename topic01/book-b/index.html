@@ -1,0 +1,364 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-01-B </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Introduction</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-01-B"> Lab-01-B </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-01-B" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<ul>
+<li>
+<p>Continuation of previous lab</p>
+</li>
+<li>
+<p>Examine Java code that generates objects that we have created earlier</p>
+</li>
+<li>
+<p>Acquire a basic understanding of</p>
+<ul>
+<li>methods</li>
+<li>parameters</li>
+<li>state</li>
+</ul>
+</li>
+<li>
+<p>Gain experience in using the BlueJ terminal window</p>
+</li>
+<li>
+<p>By the end of the lab you will be comfortable solving some simple exercises such as writing Java code to calculate properties of some of the shape objects, for example, the area and perimeter of a circle, the volume of a cone.</p>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Object state</h1>
+<p>Close and relaunch BlueJ and open the <em>shapes</em> project.</p>
+<p>Create a <em>Square</em> object named <em>square1</em> and invoke <em>makeVisible</em>. A red square shold appear in the BlueJ Shapes Demo window (Figure 1).</p>
+<p><img alt="Figure 1: State of square1 object" src="./img/square1State.png"></p>
+<p>Open the object inspector by right clicking on the Square object (the red rectangle) on the object bench and selecting <em>Inspect</em>, located towards the bottom of the drop-down menu.</p>
+<p>Create a second Square object named <em>square2</em> and open its object inspector (Figure 2).</p>
+<p><img alt="Figure 2: State of square2 object" src="./img/square2State.png"></p>
+<p>As expected, the states of both objects are identical other than that one is visible and the other is invisible.</p>
+<p>Close the object inspector and expose the methods drop-down menu (Figure 3).</p>
+<p><img alt="Figure 3: State methods" src="./img/squareMethods.png"></p>
+<p>Let's change the state of the individual Square objects, first <em>square1</em>:</p>
+<pre><code>changeColor: black
+changeSize : 100
+moveHorizontal: 100
+moveVertical: 100
+</code></pre>
+
+<p>Ensure that <em>square2</em> is visible.  You should see the following in the BlueJ Shapes Demo window (Figure 4):</p>
+<p><img alt="Figure 4: Square objects" src="./img/square2Objs.png"></p>
+<p>Inspect the state of <em>square1</em> and verify that this changed state is consistent with the new values you inserted as parameters in the methods used to change the state.</p>
+<p><img alt="Figure 5: Changed state of square1 object" src="./img/square1State2.png"></p>
+<p>Check the state of <em>square2</em> and verify that it is unchanged which, again as in the previous lab section, demonstrates that changing the state of a particular object of a class has no effect on other objects of the same class (based on current class designs).</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Explore Java code in BlueJ Terminal</h1>
+<p>We shall now explore some Java source code using the BlueJ Terminal to record method calls.</p>
+<p>Close, relaunch BlueJ and open the shapes project. </p>
+<p>Launch the terminal from the BlueJ menu (Views | Show Terminal):</p>
+<p><img alt="Figure 1: BlueJ terminal" src="./img/blueJTerminal.png"></p>
+<p>Now select the terminal <em>Record method calls</em> (Figure 2).</p>
+<p><img alt="Figure 2: Record Method calls" src="./img/blueJRecordMethodCall.png"></p>
+<p>In the BlueJ shapes window create a new Circle object named <em>circle1</em> by selecting the Circle rectangle in the BlueJ shapes window, right clicking to reveal the drop-down menu, selecing <em>new Circle()</em> and naming the object <em>circle1</em>. See Figure 3.</p>
+<p><img alt="Figure 3: Creating new circle object on object workbench" src="./img/circleOnObjectBench.png">.</p>
+<p>Execute the following statements in succession using the drop-down menu that appears on right clicking on the <em>circle1</em> object in the <em>object bench</em>.</p>
+<pre><code>makeVisible();
+changeColor(&quot;red&quot;);
+changeSize(100);
+moveHorizontal(100);
+slowMoveVertical(100);
+moveUp();
+</code></pre>
+
+<p>As you execute each statment in turn, a corresponding statement should appear in the terminal window. Here is the complete result (Figure 4):</p>
+<p><img alt="Figure 4: Circle method calls" src="./img/blueJCircleCalls.png"></p>
+<p>Here are the Java statements that were executed as a result of the actions you took:</p>
+<pre><code>Circle circle1 = new Circle();
+circle1.makeVisible();
+circle1.changeColor(&quot;red&quot;);
+circle1.changeSize(100);
+circle1.moveHorizontal(100);
+circle1.slowMoveVertical(100);
+circle1.moveUp();
+</code></pre>
+
+<p>Notice the differences between what was presented in the drop-down menu and what was output to the terminal window. Here is an explanation:</p>
+<p><strong>Instantiation</strong></p>
+<pre><code>Circle circle1 = new Circle();
+</code></pre>
+
+<p>Here we declare an object called <em>circle1</em> of type <em>Circle</em> and then in the same statement we are invoking the <em>new</em> Java operator on the constructor of the <em>Circle</em> class. The result is instantiantion of the <em>Circle</em> class and the storing of the resulting <em>Circle</em> object in the variable or attribute <em>circle1</em>.</p>
+<p><strong>Method invocation</strong></p>
+<p>With the remaining statements, for example,</p>
+<pre><code>circle1.makeVisible();
+</code></pre>
+
+<p>we invoke methods on the <em>circle1</em> object. </p>
+<p>All these methods are defined in the Circle class and are, consequently, available to be invoked by instances (objects) of the <em>Circle</em> class.</p>
+<p>The period (.) in the statement <em>circle1.makeVisible();</em> is the <em>dot</em> operator. </p>
+<p>An object (circle1), followed by a dot (.), followed by a method (makeVisible()), results in the method being invoked. </p>
+<p>A semi-colon is required to terminate Java statements.</p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Explore Java code in BlueJ code bench</h1>
+<p>In this section of the lab we shall explicitly execute the following statements:</p>
+<pre><code>Circle circle1 = new Circle();
+circle1.makeVisible();
+circle1.changeColor(&quot;red&quot;);
+circle1.changeSize(100);
+circle1.moveHorizontal(100);
+circle1.slowMoveVertical(100);
+circle1.moveUp();
+</code></pre>
+
+<p><strong>Executing Java statements individually</strong></p>
+<p>Close, relaunch BlueJ and open the shapes project. </p>
+<p>Open the BlueJ code pad by selecting menu (Views | Show Code Pad):</p>
+<p><img alt="Figure 1: BlueJ code pad" src="./img/blueJCodePad.png"></p>
+<p>The code pad appears in the BlueJ IDE window in the bottom right (Figure 2). A comment <em>This is the code pad</em> has been added to Figure 2 for clarification. Do not type this into the code pad window.</p>
+<p>In the code pad type the following:</p>
+<pre><code>Circle circle1 = new Circle();
+</code></pre>
+
+<p>This will instantiate a Circle object named circle1. It will not, however, place a representation of the object in the object bench.</p>
+<p>Now execute</p>
+<pre><code>circle1.makeVisible();
+</code></pre>
+
+<p>A blue circle should appear in the Blue Shapes Demo window.</p>
+<p>Execute the remaining statements in succession in the code bench.</p>
+<p>As you execute each statement in turn you should observe behaviour exactly similar to that in the previous lab section.</p>
+<p>The final result is illustrated in Figure 2.</p>
+<p><img alt="Figure 2: Executing statements in BlueJ Code Bench" src="./img/blueJCodeBenchStats.png"></p>
+<p><strong>Executing Java statements as a group</strong></p>
+<ul>
+<li>
+<p>Close, relaunch BlueJ and open the shapes project. </p>
+</li>
+<li>
+<p>Open the BlueJ code pad by selecting menu (Views | Show Code Pad):</p>
+</li>
+<li>
+<p>Copy all the seven statements (listed at the top of the page) and paste into the BlueJ code bench. </p>
+</li>
+<li>
+<p>Press return.</p>
+</li>
+</ul>
+<p>You should see the exact same result as in Figure 2. </p>
+<p>What conclusion can you draw from this?</p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Return values</h1>
+<p>Close, relaunch BlueJ and open the lab-classes project.</p>
+<p>Create a new <em>Student</em> object.</p>
+<p>Unlike in the case of Circle, the Student constructor requires two parameters, the student name and number. </p>
+<p>These parameters are of type String and so it is necessary to enclose the data in double quotes (Figure 1).</p>
+<p><img alt="Figure 1: New Student" src="./img/returnVal1.png"></p>
+<p>Examine the methods associated with Student (Figure 2).</p>
+<p><img alt="Figure 2: Student class methods" src="./img/returnVal2.png"></p>
+<p>Do you notice any differences between the methods of Student class and Circle class?</p>
+<p>Invoke the method <em>getName</em>. The result is illustrated in Figure 3.</p>
+<p><img alt="Figure 3: Result getName method invocation" src="./img/returnVal3.png"></p>
+<p>The signature of the method <em>getName</em> is:</p>
+<pre><code>String getName();
+</code></pre>
+
+<p>Invoking <em>getName</em> results in an object of type String being returned or handed back to the caller of the method.</p>
+<p>You could, for example, assign this returned data to a new local variable thus:</p>
+<pre><code>String studentName = student1.getName();
+</code></pre>
+
+<p><em>studentName</em> now stores the value returned by <em>getName()</em>.</p>
+<p>Now change the name of the student (Figure 4).</p>
+<p><img alt="Figure 4: Change student name" src="./img/returnVal4.png"></p>
+<p>And verify by inspecting the return object that the name has been successfully altered.</p>
+<p><img alt="Figure 5: Check return object to verify name change" src="./img/returnVal5.png"></p>
+<p>A question was posed above regarding possible differences between the methods of Student and Circle. The Circle methods are illustrated in the following Figure 6. By comparing Figure 6 and Figure 2 you will notice that the return type for all of Circle's methods is <em>void</em>, i.e. no data is returned, whereas some of the methods in String return values, for example</p>
+<ul>
+<li>getCredits returns an integer (type int)</li>
+<li>getName returns text (type String)</li>
+</ul>
+<p><img alt="Figure 6: Circle class methods" src="./img/returnValCircle.png"></p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Objects as parameters</h1>
+<p>We can use any valid type as a parameter. </p>
+<p>It is legal to use both primitive values and class objects.</p>
+<p>Examples of primitives are <em>int</em>, <em>float</em>, <em>boolean</em>.</p>
+<p>Examples of class objects are </p>
+<ul>
+<li>A String instance string1</li>
+<li>A Student instance computerScienceStudent</li>
+<li>A Circle instance circle1</li>
+</ul>
+<p>We have already encountered a constructor that takes two String objects as parameters:</p>
+<pre><code>Student(String, String)
+</code></pre>
+
+<p><img alt="Figure 1: Two String objects as parameters" src="./img/parameterObj1.png"></p>
+<p>Combinations of parameter types are valid. An example is the following constructor:</p>
+<pre><code>public Garden(int numberTrees, TreeType beech, TreeType ash, Soil clay, Climate temperate);
+</code></pre>
+
+<p>Clearly all the object types used here, namely Garden, TreeType, Soil and Climate will have been defined earlier and made available to the project.</p>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Writing an accessor for Circle class</h1>
+<p><strong>Write an accessor method to return the area of a circle object and integrate the method into project</strong></p>
+<p><em>Preliminary information</em></p>
+<p>[1] The area of a circle may be calculated from the formula </p>
+<pre><code>double area = 3.14159*radius*radius;
+</code></pre>
+
+<p>Alternatively you may import the Math library thus:</p>
+<pre><code>import java.lang.Math;
+</code></pre>
+
+<p>and use the following equivalent formula:</p>
+<pre><code>double area = Math.pow(radius, 2)*Math.PI;
+</code></pre>
+
+<p>[2] Converting from <em>int</em> to <em>double</em> types</p>
+<p>The field type for <em>diameter</em> in the Circle class is <em>int</em>. </p>
+<p>But calculations for area are performed using <em>double</em>. </p>
+<p>A <em>double</em> type caters for a decimal point which an <em>int</em> does not.</p>
+<p>You can make this conversion from <em>int</em> to <em>double</em> by an operation called <em>casting</em>. Here is a sample code snippet that shows a cast from <em>int</em> to <em>double</em>:</p>
+<pre><code>int diameter = 100;
+double val = (double)diameter/11;
+//val is approx 9.0909091 to 7 decimal places
+</code></pre>
+
+<p><em>Procedure</em></p>
+<p>[1] Launch BlueJ, open shapes project and Save As as a project named shapes to session01 directory, a sub-directory of labs in workspaceBlueJ.</p>
+<p>Using Finder (OSX), Windows Explorer or otherwise, check that you have adhered to the recommended directory struture and saved the project to the intended location (Figure 1).</p>
+<p><img alt="Figure 1: Recommended directory structure" src="./img/directoryStructure.png"></p>
+<p>Right click on the Circle class and select <em>Open Editor</em>.</p>
+<p>This will open a Java file containing the code for the Circle class (Figure 2).</p>
+<p><img alt="Figure 2: Circle class source code extract" src="./img/exercise1_1.png"></p>
+<p>[2] Write the accessor <em>getArea</em> with the following signature:</p>
+<pre><code>public double getArea();
+</code></pre>
+
+<p>[3] When you change the Circle.java file the rectangle representing the Circle class displays hatching (Figure 3).</p>
+<p><img alt="Figure 3: Circle requires compilation" src="./img/exercise1_2.png"></p>
+<p>You can compile the unit by pressing one of the Compile buttons in the BlueJ IDE window or the Circle class definition code (Figure 3).</p>
+<p>The hatching then disappears.</p>
+<p>[4] Write the accessor, compile it, create a new Circle object and verify that your method produces the correct answer (Figure 4).</p>
+<p><img alt="Figure 4: Circle requires compilation" src="./img/exercise1_3.png"></p>
+	  </section>
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<p>Before attempting these exercises ensure that the the contents of <em>chapter01</em> that you downloaded have been copied to your working directory <em>session01</em>.</p>
+<p><strong>Exercise 1</strong></p>
+<ul>
+<li>Using the modified Circle class from the earlier stages of this lab, change the diameter of a circle object.</li>
+<li>Retrieve the area of this modified Circle object.</li>
+<li>Check that the method you wrote earlier to calculate the area still produces corrrect results.</li>
+</ul>
+<p><strong>Exercise 2</strong></p>
+<ul>
+<li>Write a method to return the circumference of a circle object and integrate into project.</li>
+<li>The method signature could be int getCircumverence().</li>
+<li>Create a circle object </li>
+<li>Invoke the method you have written and note the returned value, the circumference of the circle object.</li>
+<li>Use the inspector to view the circle object state. Note the values (attributes). Use these values to verify the result returned by the getCircumference method.</li>
+<li>Change the diameter of the circle object and retest the result returned for the length of the circumference.</li>
+</ul>
+<p><strong>Exercies 3</strong></p>
+<ul>
+<li>Write a method in the Triangle class to return the area of a triangle object and integrate into project.</li>
+<li>The method signature could be int getArea().</li>
+<li>Create a triangle object.</li>
+<li>Invoke the method you have written and note the returned value, the area of the triangle.</li>
+<li>Use the inspector to view the triangle object state. Note the values (attributes). Use these values to verify the result returned by the getArea method.</li>
+</ul>
+<p><strong>Exercise 4</strong></p>
+<ul>
+<li>Open the <em>lab-classes</em> project.</li>
+<li>Create an object of class LabClass to cater for 4 students.</li>
+<li>Invoke the LabClass method <em>numberOfStudents</em>. <ul>
+<li>Note the returned value. Is it what you expected?</li>
+</ul>
+</li>
+<li>Create a new Student object.</li>
+<li>Again, invoke <em>numberOfStudents</em>. Understand why the returned result has not changed.</li>
+<li>Invoke the LabClass <em>enrolStudent</em> method and add the Student object just created as a parameter (argument).</li>
+<li>Invoke the LabClass method <em>numberOfStudents</em>. Satisfy yourself the answer is correct.</li>
+<li>Create a further 3 Student objects.</li>
+<li>Enroll these 3 students.</li>
+<li>Check the number of students in the lab class. Is the number correct? Does it corrrespond to the number of students enrolled.</li>
+<li>Inspect the LabClass object state to verify the number of students corresponds to the number returned by the method <em>numberOfStudents</em> and to the number of students that you actually enrolled.</li>
+<li>Invoke LabClass <em>printList</em> method to see a list of all the students in lab. It should be printed to the BlueJ terminal window </li>
+</ul>
+<p><strong>Exercise 5 (Advanced)</strong></p>
+<ul>
+<li>Create a new class called Cone to represent a right circular cone (Figure 1). </li>
+</ul>
+<p><img alt="Figure 1: Right circular cone" src="./img/cone.png"></p>
+<ul>
+<li>The fields of the Cone class are<ul>
+<li>a double type representing the height</li>
+<li>a Circle object representing the base</li>
+</ul>
+</li>
+<li>The constructor signature is </li>
+</ul>
+<pre><code>public Cone(double height, Circle base);
+</code></pre>
+
+<p><strong>Exercise 6</strong></p>
+<p>Write and test a method to calculate and return the volume of the cone.</p>
+<p><strong>Exercise 7</strong></p>
+<p>Write and test a method to calculate and return the surface area of the cone including the base.</p>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>
