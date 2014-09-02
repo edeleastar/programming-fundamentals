@@ -1,0 +1,385 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab.05-C </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Designing classes (Spacebook)</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab.05-C"> Lab.05-C </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab.05-C" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<p>Brief note with sample Java code relating to:</p>
+<ul>
+<li>Number systems<ul>
+<li>Binary</li>
+<li>Decimal</li>
+<li>Hexadecimal</li>
+</ul>
+</li>
+<li>Character encoding<ul>
+<li>ASCII </li>
+<li>Unicode</li>
+</ul>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Number systems</h1>
+<p>We use binary (base 2), decimal (base 10) and hexadecimal (base 16) number systems in computing.</p>
+<p>Octal (base 8) is also sometimes used.</p>
+<p>Binary (base 2) uses two symbols</p>
+<ul>
+<li>0, 1<ul>
+<li>Example 1111</li>
+</ul>
+</li>
+</ul>
+<p>Decimal (base 10) uses 10 symbols</p>
+<ul>
+<li>0, 1, 2, 3, 4, 5, 6, 7, 8, 9<ul>
+<li>Example 15</li>
+</ul>
+</li>
+</ul>
+<p>Hexadecimal (base 16) uses 16 symbols</p>
+<ul>
+<li>
+<p>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F</p>
+<ul>
+<li>Example F</li>
+</ul>
+</li>
+</ul>
+<p>The letter symbols in hex are not case sensitive. </p>
+<p>Therefore the following is an alternative to the above:</p>
+<ul>
+<li>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f</li>
+</ul>
+<p>See Table 1: note, for example, 1111 base 2 is equivalent to 15 base 10 and F base 16</p>
+<p><img alt="Figure 1: Number system examples" src="img/01.png"></p>
+<p>You are recommended to experiment using different values of all three systems at the online site <a href="http://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html">here</a>.</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>ASCII</h1>
+<p>Americal Standard Code for Information Exchange (ASCII)</p>
+<ul>
+<li>A character encoding scheme</li>
+<li>Based on English alphabet</li>
+<li>Encodes 128 specified characters<ul>
+<li>0 to 9</li>
+<li>a to z</li>
+<li>A to Z</li>
+<li>Some punctuation</li>
+<li>Control codes<ul>
+<li>For example <em>line feed</em>, <em>carriage return</em></li>
+</ul>
+</li>
+<li>Blank space</li>
+</ul>
+</li>
+</ul>
+<p>ASCII represents text in devices such as</p>
+<ul>
+<li>Computers</li>
+<li>Communications equipment</li>
+</ul>
+<p>ASCII: 128 characters</p>
+<ul>
+<li>33 non-printable</li>
+<li>95 printable</li>
+</ul>
+<p>Example non-printable character</p>
+<ul>
+<li>Line feed<ul>
+<li>ASCII code: 10</li>
+<li>Java representation: <em>\n</em></li>
+</ul>
+</li>
+</ul>
+<p>Example printable character</p>
+<ul>
+<li>The upper case letter <em>A</em><ul>
+<li>ASCII code: 65</li>
+</ul>
+</li>
+</ul>
+<p>Further information available <a href="http://en.wikipedia.org/wiki/ASCII">here</a></p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Unicode</h1>
+<p>Unicode Standard</p>
+<ul>
+<li>
+<p>Presently represents more than 110,000 characters</p>
+<ul>
+<li>In excess of 100 scripts, for example:<ul>
+<li>Left to right: Latin (English) Cyrillic (Russian) scripts</li>
+<li>Right to left: Arabic, Hebrew scripts</li>
+</ul>
+</li>
+<li>Various symbols</li>
+</ul>
+</li>
+<li>
+<p>Implemented in:</p>
+<ul>
+<li>Many operating systems</li>
+<li>XML</li>
+<li>Java</li>
+</ul>
+</li>
+<li>
+<p>Most common Unicode encodings are</p>
+<ul>
+<li>UTF-8</li>
+<li>UTF-16</li>
+</ul>
+</li>
+</ul>
+<p>In this course we are interested only in UTF-8</p>
+<p>UTF-8 uses:</p>
+<ul>
+<li>1 byte (8 bits) for ASCII chars<ul>
+<li>Same codes as ASCII</li>
+</ul>
+</li>
+<li>Up to 4 bytes for other characters</li>
+</ul>
+<p>Further information on UTF-8 is available online <a href="http://en.wikipedia.org/wiki/UTF-8">here</a></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Encoding</h1>
+<p>You are presently working from the folder ../labs/session07.</p>
+<ul>
+<li>Create a new BlueJ project here named <em>Encoding</em>.</li>
+<li>Create a new class <em>Encode</em> in this project</li>
+<li>Open <em>Encode</em> in the editor and replace the contents with the following:</li>
+</ul>
+<pre><code>public class Encode
+{
+    public static void encode() {
+        int decimal = 65;
+        int hexadecimal = 0x41;
+        char character = 0x41;
+        char character2 = 65;
+        System.out.println(&quot;decimal : &quot; + decimal);
+        System.out.println(&quot;hexadecimal : &quot; + hexadecimal);
+        System.out.println(&quot;character : &quot; + character);
+        System.out.println(&quot;character2 : &quot; + character2);
+    }
+}
+</code></pre>
+
+<p>Invoke the static method <em>encode</em> and observe the output as depicted in Figure 1.</p>
+<p><img alt="Figure 1: Example character encoding" src="img/02.png"></p>
+<p>Here is an explanation of what's happening:</p>
+<ul>
+<li>We create a decimal variable with value 65 (base 10).</li>
+<li>We create a hexadecimal variable with value 41 (base 16)<ul>
+<li>Note the <em>0x</em> that precedes the 41: this is how a hexadecimal number is expressed in Java.<ul>
+<li>Had we simply written <em>int hexadecimal = 41;</em> then the decimal number 41 would be stored in the variable <em>hexadecimal</em>.</li>
+</ul>
+</li>
+<li>41 base 16 is the same as 65 base 10<ul>
+<li>Check this in the <a href="http://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html">online calculator</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Next we create a <em>char</em> variable, <em>character</em> and assign the hexadecimal value <em>0x41</em> to it.<ul>
+<li><strong>char</strong> primitive Java data type is a single 16-bit Unicode character. It has a minimum value of 0 and a maximum value of 65,535 inclusive.</li>
+<li>Check the ASCII table <a href="http://ascii.cl/">here</a> or in Figure 2 below and note that the code for <em>A</em> is 65 (base 10), 41 (base 16).</li>
+</ul>
+</li>
+<li>Then we create a second <em>char</em> variable, <em>character2</em> and assign the decimal value 65 to it.</li>
+</ul>
+<p>We conclude the method by printing the values of the four variables (Figure 1).</p>
+<p>Study the values in Figure 1. In particular note the following:</p>
+<ul>
+<li>The variable names have been chosen so as to be self-documenting<ul>
+<li>No other significance attaches to the names</li>
+</ul>
+</li>
+<li>The output values of both the variables <em>decimal</em> and <em>hexadecimal</em> are the same<ul>
+<li>Clearly <em>System.out.println</em> outputs integers in base 10</li>
+<li>There are a number of methods to print the output in hexadecimal such as:<ul>
+<li>System.out.println(Integer.toHexString(number));</li>
+<li>Try it: add the following lines to the method, invoke and observe the output:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>System.out.println(Integer.toHexString(hexadecimal)); 
+System.out.println(Integer.toHexString(0x41));
+System.out.println(Integer.toHexString(65));
+</code></pre>
+
+<p><img alt="Figure 2: ASCII Codes Table" src="img/03.png"></p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Characters</h1>
+<p>Add the following method to <em>Encoding</em>:</p>
+<pre><code>    public static void characterExample()
+    {
+        /*
+        char backspace = '\b';
+        char formfeed = '\f';
+        char newline = '\n';
+        char retrn = '\r';
+        char tab = '\t';
+        char doublequote = '\&quot;';//for string constants
+        char singlequote = '\'';//for character constants
+        */
+        char backslash = '\\';
+        char lettera = 'a';
+        char letterA = 'A';
+
+        System.out.println(&quot;backslash ASCII code is : &quot; + (int)backslash);
+
+        char[] chars = {'\b', '\f','\n','\r', '\t','\&quot;', '\'', '\\', 'a', 'A' }; 
+
+        for(char c : chars)
+        {
+            System.out.println((int)c);
+        }
+
+        System.out.println(&quot;A - a = &quot; + (lettera - letterA));  
+    }
+</code></pre>
+
+<p>Invoke <em>characterExample</em>. The output is depicted in Figure 1.</p>
+<p><img alt="Figure 1: characterExample output" src="img/04.png"></p>
+<p>Here is a brief explanation of the above code:</p>
+<ul>
+<li>Outline documentation is provided in the block comment </li>
+<li>With the exception of <strong><em>a</em></strong> and <strong><em>A</em></strong>, the characters, if included as arguments in <em>System.out.print</em> are not visibly represented on the screen. That is, they are non-printable characters.<ul>
+<li><em>char</em>s such as \b and \r not always correctly implemented in IDEs. See <a href="http://stackoverflow.com/questions/3095986/how-to-get-backspace-b-to-work-in-eclipses-console">Here</a></li>
+</ul>
+</li>
+<li><em>char[] chars</em> is an array of primitive <em>char</em> types<ul>
+<li>The underlying integer values of this array of <em>char</em> types is displayed in the output as shown in Figure 1</li>
+</ul>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<p>The following methods are to be added to <em>Encoding</em> class</p>
+<h2>Exercise 1</h2>
+<p>Write a method to determine if 2 characters are equal.</p>
+<ul>
+<li>The signature is <em>public static boolean isEqual(char ch1, char ch2)</em><ul>
+<li>return true if <em>ch1</em> is the same as <em>ch2</em></li>
+<li>otherwise return <em>false</em><ul>
+<li>Example: if <em>ch1</em> is <strong><em>a</em></strong> and <em>ch2</em> is <strong><em>a</em></strong> return <em>true</em>.</li>
+<li>Example: if <em>ch1</em> is <strong><em>a</em></strong> and <em>ch2</em> is <strong><em>A</em></strong> return <em>false</em>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Exercise 2</h2>
+<p>Write a method to compare 2 characters.</p>
+<ul>
+<li>The signature is <em>public static int compareTo(char ch1, char ch2)</em><ul>
+<li>return -1 if the Unicode value of <em>ch1</em> is less than that of <em>ch2</em></li>
+<li>return 0 if the Unicode value of <em>ch1</em> is equal to that of <em>ch2</em></li>
+<li>return 1 if the Unicode value of <em>ch1</em> is greater than that of <em>ch2</em></li>
+</ul>
+</li>
+</ul>
+<h2>Exercise 3</h2>
+<p>Write a method to determine if 2 characters are equal, ignoring case.</p>
+<ul>
+<li>The signature is <em>public static boolean isEqualIgnoreCase(char ch1, char ch2)</em><ul>
+<li>return true if <em>ch1</em> is the same as <em>ch2</em> ignoring case<ul>
+<li>Example: if <em>ch1</em> is <strong><em>a</em></strong> and <em>ch2</em> is <strong><em>a</em></strong> return <em>true</em><ul>
+<li>Letter:   a - z, A - Z</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Assume that <em>ch1 and </em>ch2* are letters.</p>
+</li>
+<li>
+<p>Thus, for example, if <em>ch1</em> is <strong><em>A</em></strong> and <em>ch2</em> is <strong><em>a</em></strong> then return <em>true</em>.</p>
+</li>
+</ul>
+<h2>Exercise 4</h2>
+<p>Write a method to determine if a character is either a letter or a digit.</p>
+<ul>
+<li>The signature is<em>public static boolean isLetterOrDigit(char ch)</em><ul>
+<li>return <em>true</em> if <em>ch</em> is either a letter or a digit<ul>
+<li>Letter:   a - z, A - Z</li>
+<li>Digit:    0 - 9 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Exercise 5</h2>
+<p>Write a method to convert a character as follows:</p>
+<ul>
+<li>if the character is lower case convert it to upper case</li>
+<li>if the character is upper case convert it to lower case<ul>
+<li>return the converted letter<ul>
+<li>Example: if <em>ch</em> is <strong><em>a</em></strong> return <strong><em>A</em></strong></li>
+<li>Example: if <em>ch</em> is <strong><em>A</em></strong> return <strong><em>a</em></strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The method signature is <em>public static char toggleCase(char ch)</em>.</li>
+<li>Assume that <em>ch</em> is a letter.</li>
+<li>Use methods from <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Character.html"><em>Character</em></a> class</li>
+</ul>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>

@@ -1,0 +1,708 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-07-B </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Designing classes (Spacebook)</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-07-B"> Lab-07-B </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="Exercises"> Exercises </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-07-B" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<p>Spacebook Application (Part 2)</p>
+<ul>
+<li>Conduct selection of manual tests.</li>
+<li>Message: create a class named Message to manage messages between User instances.<ul>
+<li>Add fields to Message to <ul>
+<li>store the message and </li>
+<li>identify source and </li>
+<li>target of messages.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BlueJ JUnit tests</li>
+<li>Exercises</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Spacebook_v2</h1>
+<p>We shall now progress to the next iteration of the spacebook application.</p>
+<p>Open project spacebook_v1 and save as spacebook_v2.</p>
+<p>The objective of this iteration is to facilitate multiple friendships.</p>
+<p>We shall use an ArrayList, which has been discussed in a previous lecture, to store Friendship instances (objects).</p>
+<p>We will refactor the final code from spacebook_v1 that is now present in spacebook_v2.</p>
+<p>Open User in the BlueJ editor and replace the <em>friendships</em> field.</p>
+<p>Replace this code:</p>
+<pre><code>Friendship friendships;
+</code></pre>
+
+<p>with this:</p>
+<pre><code>private ArrayList&lt;Friendship&gt; friendships = new ArrayList&lt;&gt;();
+</code></pre>
+
+<p>We added the <em>private</em> access modifier above because we do not anticipate a need to directly access this array during testing. We, therefore, adhere to the philosophy of enforcing the maximum access restriction on instance variables and methods that is practical (that is, in this instance, <em>private</em>).</p>
+<p>Add an import statement at the top of the User file:</p>
+<pre><code>import java.util.ArrayList;
+</code></pre>
+
+<p>Now refactor <em>befriend</em> method.</p>
+<p>Replace the line of code:</p>
+<pre><code>    friendships = new Friendship(this, friend);
+</code></pre>
+
+<p>with these lines:</p>
+<pre><code>    Friendship friendship = new Friendship(this, friend);
+    friendships.add(friendship);
+</code></pre>
+
+<p>What we have done here is as follows:</p>
+<ul>
+<li>Instantiated a Friendship object exactly as in spacebook_v1</li>
+<li>Created a local reference to the Friendship object (friendship)</li>
+<li>Added this reference to the ArrayList using the ArrayList <em>add</em> method</li>
+</ul>
+<p>The next method to refactor is <em>unfriend</em>.</p>
+<p>Replace the line of method here:</p>
+<pre><code>public void unfriend()
+{
+    friendships = null;
+}
+</code></pre>
+
+<p>with this refactored version:</p>
+<pre><code>public void unfriend(User friend)
+{
+    for(Friendship friendship : friendships)
+    {
+        if(friendship.targetUser == friend)
+        {
+            friendships.remove(friendship);
+            return;
+        }
+    }
+}
+</code></pre>
+
+<p>What we have done here is as follows:</p>
+<ul>
+<li>Used a for-each loop to iterate across the entire ArrayList of friendships</li>
+<li>Check each element in the list to determine if it matches the actual parameter <em>friend</em>.<ul>
+<li>If a match found, removed it from the list using the ArrayList method <em>remove</em></li>
+</ul>
+</li>
+</ul>
+<p>Finally we refactor the method <em>displayFriends</em>, replacing the existing code:</p>
+<pre><code>        if(friendships != null)
+        {
+            System.out.println(&quot;My friend is &quot; + riendship.targetUser.firstName);
+        }
+        else 
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+</code></pre>
+
+<p>with the following:</p>
+<pre><code>        if(friendships.isEmpty())
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+        for(Friendship friendship : friendships)
+        {
+            System.out.println(&quot;My friend is &quot; + riendship.targetUser.firstName);
+        }
+</code></pre>
+
+<p>In this refactoring we </p>
+<ul>
+<li>First check if any <em>friendship</em> object references are stored in the ArrayList<ul>
+<li>If not then print a message indicating no friendships exist</li>
+</ul>
+</li>
+<li>Otherwise iterate the array and print the list of friends</li>
+</ul>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <p>spacebook_v2: Refactored</p>
+<p>Here is the complete refactored code for User and Friendship:</p>
+<pre><code>import java.util.ArrayList;
+
+public class User
+{
+    String firstName;
+    String lastName;
+    String email;
+    String password;
+    private ArrayList&lt;Friendship&gt; friendships = new ArrayList&lt;&gt;();
+
+    public User(String firstName, String lastName, String email, String password)
+    {
+        this.firstName  = firstName;
+        this.lastName   = lastName;
+        this.email      = email;
+        this.password   = password;
+    }
+
+    public void befriend(User friend)
+    {
+        Friendship friendship = new Friendship(this, friend);
+        friendships.add(friendship);
+    }
+
+    public void unfriend(User friend)
+    {
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser == friend)
+            {
+                friendships.remove(friendship);
+                return;
+            }
+        }
+    }
+
+    public void displayFriends() 
+    {
+        if(friendships.isEmpty())
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+        for(Friendship friendship : friendships)
+        {
+            System.out.println(&quot;My friend is &quot; + friendship.targetUser.firstName);
+        }
+    }
+}
+</code></pre>
+
+<pre><code>public class Friendship
+{
+    User sourceUser;
+    User targetUser;
+
+    public Friendship(User sourceUser, User targetUser)
+    {
+        this.sourceUser = sourceUser;
+        this.targetUser = targetUser;
+    }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>spacebook_v2: Manual Testing</h1>
+<p>Perform some more tests:</p>
+<h2>Test 1</h2>
+<p>Create three User instances by selecting User class and invoking the User constructor (see Figure 1):</p>
+<ul>
+<li>User Homer<ul>
+<li>Name: Homer Simpson</li>
+</ul>
+</li>
+<li>User barney<ul>
+<li>Name: Barney Gumble</li>
+</ul>
+</li>
+<li>User bart<ul>
+<li>Name: Bart Simpson</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Three user objects (instances) on object bench" src="img/usersThree.png"></p>
+<p>Select <em>homer</em> instance on object bench, right click and invoke <em>displayFriends</em>. </p>
+<ul>
+<li>
+<p>You should see, as in Figure 2, that there are no friends because Homer has not created any friendships.</p>
+</li>
+<li>
+<p><img alt="Figure 2: Friendless Homer" src="img/friendsNone3.png"></p>
+</li>
+</ul>
+<p>Remedy this by selecting <em>homer</em> object, right clicking and invoking <em>befriend</em> (Figure 3).
+- <img alt="Figure 3: Make a friend" src="img/friendMake.png">
+- Enter the name of the other User instance on the object bench, namely, <em>barney</em>.
+- Repeat, adding Bart as a second friend to Homer.</p>
+<p>Select Homer again and invoke <em>displayFriends</em>. </p>
+<ul>
+<li>As illustrated in Figure 4, the friends Homer has just created should be displayed.</li>
+<li><img alt="Figure 4: Friends at last" src="img/friendsList.png"></li>
+</ul>
+<h2>Test 2</h2>
+<ul>
+<li>Check that neither Barney nor Bart have any friends.</li>
+<li>Then add Bart as friend to Barney and</li>
+<li>Barney as friend to Bart</li>
+<li>Check the outcome by displaying first Bart's friends and then Barney's.<ul>
+<li>See Figure 5 for the outcome.</li>
+<li><img alt="Figure 5: Bart &amp; Barney reciprocal friendships" src="img/01.png"></li>
+</ul>
+</li>
+</ul>
+<h2>Test 3</h2>
+<ul>
+<li>Add Homer as a friend to Homer.<ul>
+<li>Invoke <em>displayFriends</em> on homer and see Figure 6 for outcome.</li>
+<li><img alt="Figure 6: Bart befriends himself" src="img/02.png"></li>
+<li>This may not be what the final <em>Spacebook</em> design should permit, that is, a user being able to befriend itself.</li>
+</ul>
+</li>
+</ul>
+<h2>Test 4</h2>
+<ul>
+<li>Remove both Bart and Barney as Homer's friends:<ul>
+<li>Use <em>unfriend</em> method</li>
+<li>Invoke <em>displayFriends</em> to check only Homer remains as a friend to himself.</li>
+<li><img alt="Figure 7: Homer alone" src="img/03.png"></li>
+</ul>
+</li>
+</ul>
+<h2>Test 5</h2>
+<ul>
+<li>Attempt to add Homer a second time as a friend to Homer:<ul>
+<li>Invoke <em>befriend(homer)</em></li>
+<li>Invoke <em>displayFriernds</em> on homer and see Figure 8 for outcome.</li>
+<li><img alt="Figure 8: Homer loves himself alot" src="img/04.png"></li>
+</ul>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>spacebook_v3 : Message class</h1>
+<p>In this iteration we shall create and integrate a class to manage messages.</p>
+<p>Open project spacebook_v2 and save as spacebook_v3.</p>
+<p>Create a new class, Message.</p>
+<p>Consider the fields that are required:</p>
+<ul>
+<li>Message</li>
+<li>The message sender</li>
+<li>The message recipient</li>
+</ul>
+<p>Both the sender and recipient will have type User.
+The Message can be typed as a Java String.</p>
+<p>Here is the outline of the Message class. </p>
+<p>Replace the default auto-generated code with this and compile:</p>
+<pre><code>public class Message
+{
+    String messageText;
+    User from;
+    User to;
+}
+</code></pre>
+
+<p>Next we add an overloaded constructor:</p>
+<pre><code>  public Message(User from, User to, String messageText)
+  {
+    this.from         = from;
+    this.to           = to;
+    this.messageText  = messageText;
+  } 
+</code></pre>
+
+<p>Finally, for the purpose of testing, we shall add a print method:</p>
+<pre><code>  public void displayMessage()
+  {
+    String nameFrom = from.firstName;
+    String nameTo   = to.firstName;
+    System.out.println(nameFrom + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo);
+  }
+</code></pre>
+
+<p>Observe the argument we are providing to <em>println</em>:</p>
+<pre><code>nameFrom + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo
+</code></pre>
+
+<p>Using the backslash (\) in this situation is known as 'escaping': whatever character is typed immediately following the escape sequence is printed exactly as is. </p>
+<p>The effect here is to enclose the message text in double quotes.</p>
+<p>We have now written a basic Message class and shall proceed to use it within User.</p>
+<p>Here is the completed code:</p>
+<pre><code>public class Message
+{
+  String messageText;
+  User from;
+  User to;
+
+  public Message(User from, User to, String messageText)
+  {
+    this.from = from;
+    this.to = to;
+    this.messageText = messageText;
+  } 
+
+  public void displayMessage()
+  {
+    String nameFrom = from.firstName;
+    String nameTo   = to.firstName;
+    System.out.println(nameFrom + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo);
+  }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>spacebook_v3 : Integrate Message</h1>
+<p>We will create both an inbox and an outbox in which to store messages.</p>
+<p>Progressively add each code snippet below, compiling the code after each addition as a means of checking for syntax errors.</p>
+<p>A suitable container is an ArrayList with which we are already familiar.</p>
+<p>Add these lines to the User class immediately following the <em>friendships</em> field: thes statements declare and instantiate the inbox and outbox.</p>
+<pre><code>    private ArrayList&lt;Message&gt; inbox    = new ArrayList&lt;&gt;();
+    private ArrayList&lt;Message&gt; outbox   = new ArrayList&lt;&gt;();
+</code></pre>
+
+<p>Next we shall write a method to send a message to a specific user. Here's the code:</p>
+<pre><code>    public void sendMessage(User to, String messageText)
+    {
+        Message message = new Message(this, to, messageText);
+        outbox.add(message);
+        to.inbox.add(message);
+    }
+</code></pre>
+
+<p>In <em>sendMessage</em> </p>
+<p>A new Message instance is created with arguments
+- this: a reference to the User instance generating the message
+- to: a reference to the User instance, the recipient of the message
+- messageText: the text of the message</p>
+<p>For testing purposes we shall write methods to display the entire contents of both the inbox and outbox. </p>
+<pre><code>    public void displayOutbox()
+    {
+      for(Message msg : outbox)
+      {
+        System.out.print(&quot;Message in &quot;+firstName+&quot;'s outbox: &quot;);
+        msg.displayMessage();
+      }
+    }
+</code></pre>
+
+<p>Observe what's happening here:</p>
+<ul>
+<li>we use a for-each to traverse the outbox</li>
+<li>for each Message type element in the list</li>
+<li>the Message displayMessage method is invoked</li>
+</ul>
+<p>Here is a similar method to display the contents of the inbox:</p>
+<pre><code>    public void displayInbox()
+    {
+      for(Message msg : inbox)
+      {
+        System.out.print(&quot;Message in &quot;+firstName+&quot;'s inbox: &quot;);
+        msg.displayMessage();
+      }
+    }
+</code></pre>
+
+<p>Here is the completed code:</p>
+<pre><code>public class User
+{
+    String firstName;
+    String lastName;
+    String email;
+    String password;
+    String statusMessage;
+    private ArrayList&lt;Friendship&gt; friendships   = new ArrayList&lt;&gt;();
+    private ArrayList&lt;Message&gt; inbox            = new ArrayList&lt;&gt;();
+    private ArrayList&lt;Message&gt; outbox           = new ArrayList&lt;&gt;(); 
+
+    public User(String firstName, String lastName, String email, String password)
+    {
+        this.firstName  = firstName;
+        this.lastName   = lastName;
+        this.email      = email;
+        this.password   = password;
+    }
+
+    public void sendMessage(User to, String messageText)
+    {
+        Message message = new Message(this, to, messageText);
+        outbox.add(message);
+        to.inbox.add(message);
+    }
+
+    public void displayOutbox()
+    {
+      for(Message msg : outbox)
+      {
+        msg.displayMessage();
+      }
+    }
+
+    public void displayInbox()
+    {
+      for(Message msg : inbox)
+      {
+        msg.displayMessage();
+      }
+    }
+    public void befriend(User friend)
+    {
+        Friendship friendship = new Friendship(this, friend);
+        friendships.add(friendship);
+    }
+
+    public void unfriend(User friend)
+    {
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser == friend)
+            {
+                friendships.remove(friendship);
+                return;
+            }
+        }
+    }
+
+    public void displayFriends() 
+    {
+        if(friendships.isEmpty())
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+        for(Friendship friendship : friendships)
+        {
+            System.out.println(&quot;My friend is &quot; + friendship.targetUser.firstName);
+        }
+    }
+  }
+</code></pre>
+
+<h2>Manual Test</h2>
+<p>In this simple test we shall:</p>
+<ul>
+<li>Create two User objects</li>
+<li>Compose and send a message from one User to the other.</li>
+<li>Check the outbox of the sender</li>
+<li>Check the inbox of the receiver</li>
+</ul>
+<p>Create two User objects on the object bench, one representing Homer, the other Barney. See Figure 1.
+<img alt="Figure 1: Create two User objects" src="img/05.png">
+Invoke the <em>sendMessage</em> on the <em>User homer</em> object, selecting the <em>User barney</em> as the target (Figure 2):
+<img alt="Figure 2: Homer sends message to Barney" src="img/06.png">
+Invoke <em>displayOutbox</em> on <em>User homer</em> to check the message is present (Figure 3):
+<img alt="Figure 3: Check Homer's outbox" src="img/07.png">
+Check the message has been received by Barney by invoking <em>displayInbox</em> on object <em>User barney</em> (Figure 4).
+<img alt="Figure 3: Check Barney's inbox" src="img/08.png"></p>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>spacebook_v3 : BlueJ JUnit Testing</h1>
+<p>A UserTest unit test class may already exist in the BlueJ spacebook_v3 window (Figure 1): </p>
+<ul>
+<li>if not then create this class by selecting User, right clicking and invoking <em>Create Test Class</em>.</li>
+</ul>
+<p><img alt="Figure 1: UserTest unit test" src="img/userTestJUnit.png"></p>
+<p>Open UserTest in the BlueJ editor and replace the code with the following fixture:</p>
+<pre><code>import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+public class UserTest
+{
+    private User homer;
+    private User barney;
+    private User bart;
+    @Before
+    public void setUp()
+    {
+        homer   = new User(&quot;Homer&quot;, &quot;Simpson&quot;, &quot;homer@simpson.com&quot;, &quot;secret&quot;);
+        barney  = new User(&quot;Barney&quot;, &quot;Gumble&quot;, &quot;barney@gumble.com&quot;, &quot;secret&quot;);
+        bart    = new User(&quot;Bart&quot;, &quot;Simpson&quot;, &quot;bart@simpson.com&quot;, &quot;secret&quot;);
+    }
+}
+</code></pre>
+
+<p>This is code has been copied from an earlier JUnit test that we conducted.</p>
+<p>We could have generated this code using the UserTest methods (Figure 2) and the BlueJ graphical user interface but have chosen instead to shortcut the process.</p>
+<p><img alt="Figure 2: UserTest methods" src="img/unitTestMethods.png"></p>
+<p>Select UserTest and invoke <em>Test Fixture to Object Bench</em>.  </p>
+<p>This creates three User objects on the object bench using the fixtures in UserTest.java (Figure 3).</p>
+<p><img alt="Figure 3: Three User objects on object bench" src="img/threeObjsBench.png"></p>
+<p>Right click on UserTest and create a test method <em>testMessages</em> (Figure 4).</p>
+<p><img alt="Figure 4: Begin recording test message method" src="img/testMsgBeginRec.png"></p>
+<p>Select <em>User homer</em> and invoke <em>sendMessage</em> to send a message to <em>bart</em>. </p>
+<p>Add the name </p>
+<ul>
+<li><em>bart</em> to the <em>User to</em> input box and</li>
+<li>a message of your choice to the <em>messageText</em> input box </li>
+</ul>
+<p>See (Figure 5).</p>
+<p><img alt="Figure 5: Home sends message to Bart" src="img/sendMessage.png"></p>
+<p>Using a similar approach send further messages: </p>
+<ul>
+<li>Barney sends a message to Homer</li>
+<li>Bart sends a message to Homer</li>
+<li>Bart sends a message to Barney</li>
+</ul>
+<p>End the recording by pressing the End button on the BlueJ IDE window (Figure 6).</p>
+<p><img alt="Figure 6" src="img/endRecording.png"></p>
+<p>Recall that the UserTest class was developed in step 03 in the first part of this session.</p>
+<ul>
+<li>Within the class we created a skeleton of the method <em>testMessages</em> (see Figure 7). 
+<img alt="Figure 7: skeleton testMessages method" src="img/11.jpg"></li>
+</ul>
+<p>Open the UserTest code in the BlueJ editor and add the following lines to the <em>testMessages</em> method.</p>
+<pre><code>        homer.displayOutbox();
+        homer.displayInbox();
+
+        bart.displayOutbox();
+        bart.displayInbox();
+
+        barney.displayOutbox();
+        barney.displayInbox();
+</code></pre>
+
+<p>Finally, invoke TestAll on UserTest and observe results along the lines illustrated in Figure 8.</p>
+<p><img alt="Figure 8: Test Message contents inbox and outbox" src="img/testAllMessages.png"></p>
+<p>This is not a rigorous test. We shall use the exercises section to suggest some improvements.</p>
+	  </section>
+	  <section data-tab="Exercises" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<h2>Exercise 1</h2>
+<ul>
+<li>Create 5 User objects on the object bench:<ul>
+<li>Select names, email address and password of your choice for each.</li>
+<li>Here is a sample constructor invocation that conforms to the User constructor signature and that uses very simple strings :<ul>
+<li>User("a", "b", "c", "d")</li>
+</ul>
+</li>
+<li>Tablulate on paper the friendship relationships depicted in Figure 1.</li>
+<li>Use the object bench to represent the friendship relationships .</li>
+<li>Verify correct implementation of the friendship network using existing User class method(s)</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: User - Friendship network" src="img/09.png"></p>
+<h2>Exercise 2</h2>
+<p>Recall that it is possible for a user to befriend itself. 
+For example, you could </p>
+<ul>
+<li>create a User object <em>bart</em> and </li>
+<li>invoke <em>befriend</em> on <em>bart</em> <ul>
+<li>using <em>bart</em> as a parameter</li>
+</ul>
+</li>
+<li>invoking <em>displayFriends</em> on <em>bart</em> will demonstrate he has succeeded in befriending himself (see Figure 2).
+<img alt="Figure 2: Bart befriends Bart" src="img/10.png"></li>
+<li>This Exercise requires you to modify the method <em>befriend</em> in User to disallow a user befriending oneself.<ul>
+<li>Test the refactored method works as intended by invoking it<ul>
+<li>Using the invoking object as the argument, that is, attempting to befriend oneself</li>
+<li>Using an object other than the invoking object to establish a friendship.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Exercise 3</h2>
+<p>Presently a user can remove a specific friend from its list of friendships by invoking <em>unfriend</em>.</p>
+<ul>
+<li>Write a method that would allow a user to remove all friends.</li>
+<li>Use the signature: <em>public void unfriendAll()</em></li>
+</ul>
+<h2>Exercise 4</h2>
+<ul>
+<li>Introduce additional fields in User as follows:</li>
+</ul>
+<pre><code>  int    age;
+  String nationality;
+</code></pre>
+
+<ul>
+<li>Modify the overloaded constructor to includes parameters representing these fields.<ul>
+<li>Apply this signature:<ul>
+<li><em>public User(String firstName, String lastName, int age, String nationality, String email, String password)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Initialize the new fields within the constructor.</li>
+</ul>
+<h2>Exercise 5</h2>
+<ul>
+<li>Introduce a method named <em>change</em> to the User class with the following signature:<ul>
+<li><em>public void change(String firstName, String lastName, int age, String nationality, String email, String password)</em></li>
+<li>Implement the method.</li>
+</ul>
+</li>
+<li>Modify the implementation of the overloaded constructor implemented in an earlier step as follows:<ul>
+<li>Do not directly assign the actual parameter values to the instance variables<ul>
+<li>Example: <em>this.firstName = firstName;</em></li>
+</ul>
+</li>
+<li>Instead, invoke the <em>change</em> method</li>
+<li>Reason: Apply where possible the <em>Do not repeat yourself (DRY)</em> policy.<ul>
+<li>We have already discussed DRY in an an earlier session (session03 &amp; lecture 5).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Carry out the following tests:<ul>
+<li>Create an instance of User using the new constructor.</li>
+<li>Verify the state of the object using the inspector.</li>
+<li>Change the object's state using the <em>change</em> method.</li>
+<li>Again, verify the object's state is correct.</li>
+</ul>
+</li>
+</ul>
+<h2>Exercise 6</h2>
+<ul>
+<li>Introduce a method to broadcast a message from a particular user to all its friends.<ul>
+<li>The signature of the method is:<ul>
+<li><em>public void broadcastMessage(String messageText)</em></li>
+</ul>
+</li>
+<li>Test the method as follows:<ul>
+<li>Use the UserTest as previously (or othe methods) to populate the object bench with 5 User objects.</li>
+<li>The network of friendships established in Exercise 1 should be present.</li>
+<li>Marge has befriended Bart, Barney and Homer:<ul>
+<li>Marge broadcasts a message</li>
+<li>Check Marge's outbox</li>
+<li>Check the inbox of the intended recipients.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>

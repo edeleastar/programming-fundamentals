@@ -1,0 +1,310 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-07-A-Solutions </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Designing classes (Spacebook)</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-07-A-Solutions"> Lab-07-A-Solutions </a>
+          <a class="item" data-tab="01"> 01 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-07-A-Solutions" class="ui tab stacked moodle-book segment">
+	     <h1>Objectives</h1>
+<p>Solutions to exercises in Spacebook Application (Part 1)</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Exercises</h1>
+<h2>Exercise 1</h2>
+<p>This task relates to iteration <em>spacebook_v0</em>.</p>
+<p>In summary, this task requires that you </p>
+<ul>
+<li>Replace the single messages array with arrays representing a message inbox and a message outbox</li>
+<li>Replace the method that displays messages with<ul>
+<li>Method to display the contents of inbox</li>
+<li>Method to display the contents of outbox</li>
+</ul>
+</li>
+<li>Implement a method to send a message to another user<ul>
+<li><em>public void sendMessage(User to, String messageText)</em></li>
+</ul>
+</li>
+<li>Perform some basic tests.</li>
+</ul>
+<p>Here is the task description in greater detail:</p>
+<p>Refactor the User class as follows:</p>
+<ul>
+<li>Remove field <em>int numberMessages</em></li>
+<li>Replace with<ul>
+<li><em>int numberMsgsInbox  = 0;</em></li>
+<li><em>int numberMsgsOutbox = 0;</em></li>
+</ul>
+</li>
+<li>Remove <em>String[] messages</em></li>
+<li>Replace with <ul>
+<li><em>String[] inbox</em> representing messages received</li>
+<li><em>String[] outbox</em> representing messages sent</li>
+</ul>
+</li>
+<li>Remove method <em>addMessage</em></li>
+<li>Replace with<ul>
+<li><em>public void sendMessage(User to, String messageText)</em><ul>
+<li>add message to <em>outbox</em> of sender.</li>
+<li>add message to <em>inbox</em> of recipient (target user).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Remove method <em>displayMessages</em></li>
+<li>Repace with<ul>
+<li><em>displayInbox</em>, a method to display messages received</li>
+<li>*displayOutbox, a method to display messages sent</li>
+</ul>
+</li>
+<li>Test the refactored User class as follows:<ul>
+<li>Instantiate <em>User marge</em> on object bench.</li>
+<li>Instantiate <em>User homer</em> on object bench.</li>
+<li>Marge sends message to Homer<ul>
+<li>"Marge says Hi Homer"</li>
+</ul>
+</li>
+<li>Invoke <em>displayOutbox</em> on <em>User marge</em> to verify message sent.</li>
+<li>Invoke <em>displayInbox</em> on <em>User homer</em> to verify message received. </li>
+<li>Homer sends message to Marge<ul>
+<li>"Homer says Hi Marge"</li>
+</ul>
+</li>
+<li>Invoke <em>displayOutbox</em> on <em>User homer</em> to verify message sent.</li>
+<li>Invoke <em>displayInbox</em> on <em>User marge</em> to verify message received.</li>
+</ul>
+</li>
+</ul>
+<p>Here is the skeleton of the refactored class:</p>
+<pre><code>public class User
+{
+    static final int MAX_NUMBER_FRIENDS   = 100;
+    static final int MAX_NUMBER_MESSAGES  = 100;
+
+    int numberFriends   = 0;
+    int numberMsgsInbox = 0;
+    int numberMsgsOutbox= 0;
+
+    String firstName;
+    String lastName;
+    String email;
+    String password;
+
+    String[] friends    = new String[MAX_NUMBER_FRIENDS];
+    String[] outbox     ...
+    String[] inbox      ...
+
+    public User(String firstName, String lastName, String email, String password)
+    {
+        this.firstName  = firstName;
+        this.lastName   = lastName;
+        this.email      = email;
+        this.password   = password;
+    }
+
+    public void befriend(String name)
+    {
+        friends[numberFriends] = new String(name);
+        numberFriends += 1;
+    }
+
+    public void unfriend(String name)
+    {
+        for (int i = 0; i &lt; friends.length; i += 1)
+        {
+            String currentFriend = friends[i];
+            if (currentFriend != null &amp;&amp; currentFriend.equals(name))
+            {
+                friends[i]      = null;
+                numberFriends   -= 1;
+            }
+        }
+    } 
+
+    public void sendMessage(User to, String messageText)
+    {
+
+    }
+
+    public void displayOutbox()
+    {
+
+    }
+
+    public void displayInbox()
+    {
+
+    }
+
+    public void displayFriends()
+    {
+        for (int i = 0; i &lt; numberFriends; i += 1)
+        {
+            System.out.println(friends[i]);
+        }
+    } 
+}
+</code></pre>
+
+<h2>Task 1 Solution</h2>
+<p>Working through the above skeleton and filling in missing code, we first instantiate the outbox and inbox arrays:</p>
+<pre><code>    String[] outbox     = new String[MAX_NUMBER_MESSAGES];
+    String[] inbox      = new String[MAX_NUMBER_MESSAGES];
+</code></pre>
+
+<p>Next we implement the <em>displayOutbox</em> method:</p>
+<pre><code>    public void displayOutbox()
+    {
+        for (int i = 0; i &lt; numberMsgsOutbox; i += 1)
+        {
+            System.out.println(outbox[i]);
+        }
+    }
+</code></pre>
+
+<p>We may have been tempted to use an enhanced for loop here, resulting in a method as follows:</p>
+<pre><code>    public void displayOutbox1()
+    {
+        for (String message : outbox)
+        {
+            System.out.println(message.toString());
+        }
+    }
+</code></pre>
+
+<p>Why does this method fail?</p>
+<p>Now the <em>displayInbox</em> method: this is very similar to <em>displayOutbox</em>:</p>
+<pre><code>    public void displayInbox()
+    {
+        for (int i = 0; i &lt; numberMsgsInbox; i += 1)
+        {
+            System.out.println(inbox[i]);
+        }
+    }
+</code></pre>
+
+<p>Finally we implement <em>sendMessage</em>:</p>
+<pre><code>
+    public void sendMessage(User to, String messageText)
+    {
+        outbox[numberMsgsOutbox]        = new String(messageText);
+        to.inbox[to.numberMsgsInbox]    = new String(messageText);
+        to.numberMsgsInbox  += 1;
+        numberMsgsOutbox    += 1;
+    }
+</code></pre>
+
+<p>Explanation:</p>
+<ul>
+<li>Instantiate a new outbox array element <ul>
+<li><em>outbox[numberMsgsOutbox]   = new String(messageText);</em></li>
+</ul>
+</li>
+<li>Instantiate a new inbox array element in the target user object<ul>
+<li><em>to.inbox[numberMsgsInbox]  = new String(messageText);</em></li>
+</ul>
+</li>
+<li>Both array elements contain the same String representation of the message text</li>
+<li>Increment the counter variable in the target User object<ul>
+<li><em>to.numberMsgsInbox += 1;</em></li>
+</ul>
+</li>
+<li>Increment the counter variable in <em>this</em> User object (the message sender)<ul>
+<li><em>numberMsgsOutbox += 1;</em></li>
+</ul>
+</li>
+</ul>
+<h2>Test</h2>
+<p>This is one approach to create and populate User objects as specified:</p>
+<ul>
+<li>Create UserTest and open in editor<ul>
+<li>Replace all existing code with the following:</li>
+</ul>
+</li>
+</ul>
+<pre><code>import static org.junit.Assert.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+public class UserTest
+{
+    private User homer;
+    private User marge;
+    @Before
+    public void setUp()
+    {
+        marge = new User(&quot;Marge&quot;, &quot;Simpson&quot;, &quot;marge@simpson.com&quot;, &quot;secret&quot;);    
+        homer = new User(&quot;Homer&quot;, &quot;Simpson&quot;, &quot;homer@simpson.com&quot;, &quot;secret&quot;);
+        marge.sendMessage(homer, &quot;Marge says Hi Homer&quot;);
+        homer.sendMessage(marge, &quot;Homer says Hi Marge&quot;);
+    }
+
+    @Test
+    public void testFriends()
+    {
+    }
+
+    @Test
+    public void testMessages()
+    {
+    }
+}
+</code></pre>
+
+<p>Note the messages being sent in <em>setUp()</em></p>
+<ul>
+<li><em>marge.sendMessage(homer, "Marge says Hi Homer");</em></li>
+<li><em>homer.sendMessage(marge, "Homer says Hi Marge");</em></li>
+<li>Invoke Test Fixture to Obect Bench on UserTest</li>
+<li>Invoke <em>displayInbox</em> and <em>displayOutbox</em> on both <em>User marge</em> and <em>User homer</em>.<ul>
+<li>You should observe the message sent by Marge both in her outbox and Homer's inbox.</li>
+<li>Similarly, the message sent by Homer should appear in both his outbox and Marge' inbox.</li>
+<li>For example, Figure 1 displays the contents of Marge's outbox.</li>
+<li>And Figure 2 displays the contents of Homer's inbox (which as expected, has the message sent by Marge).
+<img alt="Figure 1: Contents of Marge's outbox" src="img/01.png">
+<img alt="Figure 2: Contents of Homer's inbox" src="img/02.png"></li>
+</ul>
+</li>
+</ul>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>
