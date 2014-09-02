@@ -1,0 +1,1818 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-10-B-Solutions </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Assignments</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-10-B-Solutions"> Lab-10-B-Solutions </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-10-B-Solutions" class="ui tab stacked moodle-book segment">
+	     <h1>Readme</h1>
+<p>These are a sample set of possible solutions to assignment 2</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Q1</h1>
+<p><strong><em>Task 1</em></strong></p>
+<p>In <em>diary-prototype</em> project create a class named Calendar containing only the following method:</p>
+<ul>
+<li><em>public static String dayName(int dayNumber)</em></li>
+</ul>
+<p>Use the <em>switch</em> statement.</p>
+<ul>
+<li>Note: Although it is possible to implement this method using <em>if-else</em>, it is essential to use <em>switch</em>.<ul>
+<li>Zero marks will be given for alternative implementations.</li>
+</ul>
+</li>
+</ul>
+<p>Specification <em>dayName</em>:</p>
+<ul>
+<li>Parameter <em>dayNumber</em> in range [0, 6]<ul>
+<li>0 represents Sunday, 1 represents Monday and so on.</li>
+</ul>
+</li>
+<li>Returns the name of the day corresponding to the parameter<ul>
+<li>For example invoking <em>dayNumber(2)</em> returns Tuesday.</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 2</em></strong></p>
+<p>Add a further method to Calendar:</p>
+<ul>
+<li><em>public static String monthName(int monthNumber)</em></li>
+</ul>
+<p>Use the <em>switch</em> statement .</p>
+<ul>
+<li>Note: Although it is possible to implement this method using <em>if-else</em>, it is essential to use <em>switch</em>.<ul>
+<li>Zero marks will be given for alternative implementations.</li>
+</ul>
+</li>
+</ul>
+<p>Specification <em>monthName</em></p>
+<ul>
+<li>Parameter <em>monthName</em> in range [0, 11]<ul>
+<li>0 represents January, 1 represents February and so on.</li>
+</ul>
+</li>
+<li>Returns the name of the month corresponding to the parameter<ul>
+<li>For example invoking <em>monthName(6)</em> returns July </li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Tasks 1 &amp; 2 Solutions combined with class Calendar</em></strong></p>
+<pre><code>/**
+ * @file Calendar.java
+ * @brief This class contains static methods to convert integer numbers
+ *        representing days and months into their corresponding names. For
+ *        example in the case of the method dayName the parameter number 0 is
+ *        mapped to Sunday, 1 to Monday and so on.
+ * @version 1.0 April 1, 2014
+ * @author jfitzgerald
+ */
+public class Calendar
+{
+    /**
+     * Returns the name of the day as a string corresponding to the integer
+     * parameter input. The parameter range is [0 6] corresponding to the range
+     * [Sunday Saturday]. Thus, for example, dayName(0) returns Sunday.
+     * 
+     * @param dayNumber
+     *            an integer representing the name of a day, 0 being Sunday and
+     *            so on.
+     * @return the day name.
+     */
+    public static String dayName(int dayNumber)
+    {
+        String dayName;
+        switch (dayNumber)
+        {
+        case 0:
+            dayName = &quot;Monday&quot;;
+            break;
+        case 1:
+            dayName = &quot;Tuesday&quot;;
+            break;
+        case 2:
+            dayName = &quot;Wednesday&quot;;
+            break;
+        case 3:
+            dayName = &quot;Thursday&quot;;
+            break;
+        case 4:
+            dayName = &quot;Friday&quot;;
+            break;
+        case 5:
+            dayName = &quot;Saturday&quot;;
+            break;
+        case 6:
+            dayName = &quot;Sunday&quot;;
+            break;
+        default:
+            dayName = &quot;Invalid day number&quot;;
+        }
+        return dayName;
+    }
+
+    /**
+     * Returns the name of the month as a string corresponding to the integer
+     * parameter input. The parameter range is [0 11] corresponding to the range
+     * [January December]. Thus, for example, monthName(0) returns January.
+     * 
+     * @param monthNumber
+     *            an integer representing a month in the year, 0 being January
+     *            and so on.
+     * @return the month name.
+     */
+    public static String monthName(int dayNumber)
+    {
+        String monthName;
+        switch (dayNumber)
+        {
+        case 0:
+            monthName = &quot;January&quot;;
+            break;
+        case 1:
+            monthName = &quot;February&quot;;
+            break;
+        case 2:
+            monthName = &quot;March&quot;;
+            break;
+        case 3:
+            monthName = &quot;April&quot;;
+            break;
+        case 4:
+            monthName = &quot;May&quot;;
+            break;
+        case 5:
+            monthName = &quot;June&quot;;
+            break;
+        case 6:
+            monthName = &quot;July&quot;;
+            break;
+        case 7:
+            monthName = &quot;August&quot;;
+            break;
+        case 8:
+            monthName = &quot;September&quot;;
+            break;
+        case 9:
+            monthName = &quot;October&quot;;
+            break;
+        case 10:
+            monthName = &quot;November&quot;;
+            break;
+        case 11:
+            monthName = &quot;December&quot;;
+            break;
+
+        default:
+            monthName = &quot;Invalid month number&quot;;
+        }
+        return monthName;
+    }
+}
+</code></pre>
+
+<p><strong><em>Task 3</em></strong></p>
+<p>DiaryTester: Write the positive regression test <em>checkDailyCapacity</em>:</p>
+<ul>
+<li>
+<p>Its purpose is to attempt to add a 1-hour appointment to every available slot during a specific day.</p>
+<ul>
+<li>If the attempt succeeds, the method returns <em>true</em>, else <em>false</em>.</li>
+</ul>
+</li>
+<li>
+<p>The signature is <em>public boolean checkDailyCapacity(int dayNmr)</em></p>
+</li>
+<li>Here is the method specification<ul>
+<li>the argument range is [0, 4] representing the four workdays, Monday to Friday</li>
+<li>create an array of 1-hour appointments, one for each working hour in the day</li>
+<li>recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+<li>make the argument <em>description</em><ul>
+<li><em>"Day "+ dayNmr +" : Appointment number"+j</em> </li>
+<li>where j is the hour number (range [0, Day.MAX_APPOINTMENTS_PER_DAY])</li>
+<li>a typical description would, therefore, be <ul>
+<li><em>Day 0 : Appointment number 4</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Incorporate method into DiaryTester in the <em>positiveTests</em> method<ul>
+<li>Insert method in a loop to be invoked for all 5 working days</li>
+</ul>
+</li>
+<li>Run all regression tests using <em>DiaryTesterTest.Test All</em>.</li>
+</ul>
+<p>Skeleton code: <em>DiaryTester</em></p>
+<pre><code>    public boolean checkDailyCapacity(int dayNmr)
+    {
+        Day day = ...;
+        int nmrHrsAppointment = 1;
+        Appointment[] appointment = ...;
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment[j] = ...;
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            isAppointmentAdded = ...;
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p>Skeleton code <em>DiaryTesterTest</em></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+
+        for(int dayNmr = 0; dayNmr &lt; ...; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity(dayNmr));
+        }
+    }
+</code></pre>
+
+<p><strong><em>Task 3 Solution</em></strong></p>
+<p><em>DiaryTester</em></p>
+<pre><code>public boolean checkDailyCapacity(int dayNmr)
+    {
+        Day day = new Day(dayNmr);
+        int nmrHrsAppointment = 1;
+        Appointment[] appointment = new Appointment[Day.MAX_APPOINTMENTS_PER_DAY];
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment[j] = new Appointment(&quot;Day &quot;+ dayNmr +&quot; : Appointment number &quot;+j, nmrHrsAppointment);
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            isAppointmentAdded = isAppointmentAdded &amp;&amp; day.makeAppointment(j + Day.START_OF_DAY,  appointment[j]);
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p>Alternative solution:</p>
+<pre><code>public boolean checkDailyCapacity(int dayNmr)
+    {
+        Day day = new Day(dayNmr);
+        int nmrHrsAppointment = 1;
+        Appointment[] appointment = new Appointment[Day.MAX_APPOINTMENTS_PER_DAY];
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment[j] = new Appointment(&quot;Day &quot;+ dayNmr +&quot; : Appointment number &quot;+j, nmrHrsAppointment);
+        }
+
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            if(!isAppointmentAdded &amp;&amp; day.makeAppointment(j + Day.START_OF_DAY,  appointment[j])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+</code></pre>
+
+<p><em>DiaryTesterTest</em></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+
+        for(int dayNmr = 0; dayNmr &lt; Day.NUMBER_WORKDAYS_PER_WEEK; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity(dayNmr));
+        }
+    }
+</code></pre>
+
+<p><strong><em>Task 4</em></strong></p>
+<p>Copy the method <em>checkDailyCapacity</em> as <em>checkDailyCapacity2</em> and refactor so that</p>
+<ul>
+<li>[1] A typical actual parameter <em>description</em> in <em>Appointment</em> constructor resolves to:<ul>
+<li><em>Day Monday</em> <ul>
+<li>rather than</li>
+</ul>
+</li>
+<li><em>Day 0</em></li>
+<li>Hint: Use the newly developed Calendar class.</li>
+<li>recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+</ul>
+</li>
+<li>[2] Print out the following for each appointment:<ul>
+<li>Day Friday : Appointment number 1 Appointment duration 1</li>
+</ul>
+</li>
+<li>See <em>Figure 1 Invoking checkDailyCapacity2</em></li>
+</ul>
+<p><img alt="Figure 1: Invoking checkDailyCapacity2" src="img/01.png"></p>
+<p><strong><em>Task 4 Solution</em></strong></p>
+<p><em>DiaryTester</em></p>
+<pre><code>    public boolean checkDailyCapacity2(int dayNmr)
+    {
+        Day day = ...;
+        int nmrHrsAppointment = 1;
+        Appointment[] appointment = new Appointment[Day.MAX_APPOINTMENTS_PER_DAY];
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment[j] = new Appointment(&quot;Day &quot;+ Calendar.dayName(dayNmr) +&quot; : Appointment number &quot; + (j + 1), nmrHrsAppointment);
+            System.out.println(appointment[j].getDescription() + &quot; Appointment duration &quot; + appointment[j].getDuration());        
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            isAppointmentAdded = isAppointmentAdded &amp;&amp; day.makeAppointment(j + Day.START_OF_DAY,  appointment[j]);
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p><strong><em>Task 5</em></strong></p>
+<p>This task remembles Tasks 3 &amp; 4 except that </p>
+<ul>
+<li>instead of using an array of <em>Appointment</em> objects you are required to use an <em>ArrayList</em> of objects<ul>
+<li>Note: use a <em>for</em> loop, as before, to populate the ArrayList of appointments</li>
+<li>As you populate the ArrayList, print out the details of each appointment as depicted in Figure 2.</li>
+</ul>
+</li>
+<li>instead of using a <em>for</em> loop to make the appointments you are required to use an iterator.</li>
+</ul>
+<p>DiaryTester: Write the positive regression test <em>checkDailyCapacity3</em>:</p>
+<ul>
+<li>
+<p>Its purpose is to attempt to add a 1-hour appointment to every available slot during a specific day.</p>
+<ul>
+<li>If the attempt succeeds, the method returns <em>true</em>, else <em>false</em>.</li>
+</ul>
+</li>
+<li>
+<p>The signature is <em>public boolean checkDailyCapacity3(int dayNmr)</em></p>
+</li>
+<li>Here is the method specification<ul>
+<li>the argument range is [0, 4] representing the four workdays, Monday to Friday</li>
+<li>create an <em>ArrayList</em> of 1-hour appointments, one for each working hour in the day</li>
+<li>recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+<li>make the argument <em>description</em><ul>
+<li><em>"Day "+ dayNmr +" : Appointment number"+j</em> </li>
+<li>where j is the hour number (range [0, Day.MAX_APPOINTMENTS_PER_DAY])</li>
+<li>a typical description would, therefore, be <ul>
+<li><em>Day 0 : Appointment number 4</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Incorporate method into DiaryTester in the <em>positiveTests</em> method<ul>
+<li>Insert method in a loop to be invoked for all 5 working days</li>
+</ul>
+</li>
+<li>Run all regression tests using <em>DiaryTesterTest.Test All</em>.</li>
+</ul>
+<p>Skeleton code: <em>DiaryTester</em></p>
+<pre><code>    public boolean checkDailyCapacity3(int dayNmr)
+    {
+        Day day = ...;
+        int nmrHrsAppointment = 1;
+        ArrayList&lt;Appointment&gt; appointment = ...;
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            //populate the list appointments
+            ...
+
+            //print out the day number appointment number and appointment duration matching the layout in Figure 2
+            ...
+
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        Iterator&lt;...&gt; it = ... ;
+        int hour = ...;
+        while(it.hasNext())
+        {
+            isAppointmentAdded = ...;
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p>Skeleton code <em>DiaryTesterTest</em></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+
+        for(int dayNmr = 0; dayNmr &lt; ...; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity3(dayNmr));
+        }
+    }
+</code></pre>
+
+<p><img alt="Figure 2: Task 6 - checkDailyCapacity3" src="img/02.png"></p>
+<p><strong><em>Task 5 Solution</em></strong></p>
+<p><em>DiaryTester</em></p>
+<pre><code>    public boolean checkDailyCapacity3(int dayNmr)
+    {
+        Day day = new Day(dayNmr);
+        int nmrHrsAppointment = 1;
+        ArrayList&lt;Appointment&gt; appointment = new ArrayList&lt;&gt;();
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment.add(new Appointment(&quot;Day &quot;+ dayNmr +&quot; : Appointment number &quot;+j, nmrHrsAppointment));
+            System.out.println(appointment.get(j).getDescription() + &quot; Appointment duration &quot; + appointment.get(j).getDuration());   
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        Iterator&lt;Appointment&gt; it = appointment.iterator();
+        int hour = 0;
+        while(it.hasNext())
+        {
+            isAppointmentAdded = isAppointmentAdded &amp;&amp; day.makeAppointment(Day.START_OF_DAY + hour++,  it.next());
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p><em>DiaryTesterTest</em></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+
+        for(int dayNmr = 0; dayNmr &lt; Day.NUMBER_WORKDAYS_PER_WEEK; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity3(dayNmr));
+        }
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Q2</h1>
+<p><strong><em>Task 1</em></strong></p>
+<p>Create a class in <em>BIABank</em> project named <em>FinanceUtilities</em>.</p>
+<ul>
+<li>Write a method <em>isValidAscending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 1:
+<img alt="Figure 1: Specification and signature method isValidAscending" src="img/04.png"></li>
+</ul>
+<p><strong><em>Task 1 Solution</em></strong></p>
+<pre><code>
+    /**
+     * Checks if all PIN digits in ascending order
+     * If in ascending order the PIN is invalid
+     * Otherwise the PIN is valid
+     *
+     * @param  a string representing the PIN
+     * @return true if the PIN is valid else false
+     */
+    public static boolean isValidAscending(String pin)
+    {
+        byte[] bytes = pin.getBytes();
+        for(int i=1; i &lt; bytes.length; i+=1)
+        { 
+            if((bytes[i] - bytes[i-1]) != 1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+</code></pre>
+
+<p><strong><em>Task 2</em></strong></p>
+<ul>
+<li>Write a method in <em>FinanceUtilities</em> <em>isValidDescending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 2:
+<img alt="Figure 2: Specification and signature method isValidDescending" src="img/05.png"></li>
+</ul>
+<p><strong><em>Task 2 Solution</em></strong></p>
+<pre><code>    /**
+     * Checks if all PIN digits in descending order
+     * If in descending order the PIN is invalid
+     * Otherwise the PIN is valid
+     *
+     * @param  a string representing the PIN
+     * @return true if the PIN is valid else false
+     */
+    public static boolean isValidDescending(String pin)
+    {
+        byte[] bytes = pin.getBytes();
+        for(int i=1; i &lt; bytes.length; i+=1)
+        { 
+            if((bytes[i-1] - bytes[i]) != 1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+</code></pre>
+
+<p><strong><em>Task 3</em></strong></p>
+<ul>
+<li>Write a method in <em>FinanceUtilities</em> <em>isValidAscendingDescending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 2:
+<img alt="Figure 3: Specification and signature method isValidAscendingDescending" src="img/06.png"></li>
+</ul>
+<p><strong><em>Task 3 Solution</em></strong></p>
+<pre><code>    /**
+     * Checks if all PIN digits in ascending or descending order
+     * If in ascending or descending order the PIN is invalid
+     * Otherwise the PIN is valid
+     *
+     * @param  a string representing the PIN
+     * @return true if the PIN is valid else false
+     */
+    public static boolean isValidAscendingDescending(String pin)
+    {
+        byte[] bytes = pin.getBytes();
+        for(int i=1; i &lt; bytes.length; i+=1)
+        { 
+            if((Math.abs(bytes[i] - bytes[i-1])) != 1)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+</code></pre>
+
+<p>Alternative solution:</p>
+<pre><code>    /**
+     * Checks if all PIN digits in ascending or descending order
+     * If in ascending or descending order the PIN is invalid
+     * Otherwise the PIN is valid
+     *
+     * @param  a string representing the PIN
+     * @return true if the PIN is valid else false
+     */
+    public static boolean isValidAscendingDescending(String pin)
+    {
+        return isValidAscending(pin) &amp;&amp; isValidDescending(pin);
+    }
+</code></pre>
+
+<p><strong><em>Task 4</em></strong></p>
+<p>Create a JUnit test class <em>FinanceUtilitiesTest</em>.
+Using the BlueJ recorder or otherwise write a positive test method complying with the following specification:</p>
+<ul>
+<li>Signature: <em>@Test public void testPinsTrue()</em></li>
+<li>Conduct 4 tests in this method <em>testPinsTrue by invoking:</em><ul>
+<li><em>isValidAscending</em> with argument "12234"</li>
+<li><em>isValidDescending</em> with argument "43221"</li>
+<li><em>isValidAscendingDescending</em> with argument "12234"</li>
+<li><em>isValidAscendingDescending</em> with argument "43221"</li>
+</ul>
+</li>
+</ul>
+<p>Invoke <em>FinanceUtilitiesTest.Test All</em>: all tests should succeed.</p>
+<p><strong><em>Task 4 Solution</em></strong></p>
+<pre><code>    @Test
+    public void testPinsTrue()
+    {
+        assertEquals(true, FinanceUtilites.isValidAscending(&quot;12234&quot;));
+        assertEquals(true, FinanceUtilites.isValidDescending(&quot;43221&quot;));
+        assertEquals(true, FinanceUtilites.isValidAscendingDescending(&quot;12234&quot;));
+        assertEquals(true, FinanceUtilites.isValidAscendingDescending(&quot;43221&quot;));      
+    }
+</code></pre>
+
+<p><strong><em>Task 5</em></strong></p>
+<p>In <em>FinanceUtilitiesTest</em>, using the BlueJ recorder or otherwise write a negative test method complying with the following specification:</p>
+<ul>
+<li>Signature: <em>@Test public void testPinsFalse()</em></li>
+<li>Conduct 4 tests in this method <em>testPinsFalse by invoking:</em><ul>
+<li><em>isValidAscending</em> with argument "1234"</li>
+<li><em>isValidDescending</em> with argument "4321"</li>
+<li><em>isValidAscendingDescending</em> with argument "1234"</li>
+<li><em>isValidAscendingDescending</em> with argument "4321"</li>
+</ul>
+</li>
+</ul>
+<p>Invoke <em>FinanceUtilitiesTest.Test All</em>: all tests should succeed.</p>
+<p><strong><em>Task 5 Solution</em></strong></p>
+<pre><code>    @Test
+    public void testPinsNegative()
+    {
+        assertEquals(false, FinanceUtilites.isValidAscending(&quot;1234&quot;));
+        assertEquals(false, FinanceUtilites.isValidDescending(&quot;4321&quot;));
+        assertEquals(false, FinanceUtilites.isValidAscendingDescending(&quot;1234&quot;));
+        assertEquals(false, FinanceUtilites.isValidAscendingDescending(&quot;4321&quot;));      
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Q3</h1>
+<p>Write a series of methods described in the tasks below in the class <em>CharString</em>, a skeleton for which is provided:</p>
+<p><strong><em>Task 1</em></strong></p>
+<ul>
+<li>Write a method to determine if a character is lower case.</li>
+<li>Signature of method should be:<ul>
+<li><em>public static boolean isLowerCase(char ch)</em></li>
+</ul>
+</li>
+<li>Method returns <em>true</em> if character is lower case else it returns <em>false</em></li>
+</ul>
+<p><strong><em>Task 1 Solution</em></strong></p>
+<pre><code>    //Task 1
+    public static boolean isLowerCase(char ch)
+    {       
+        return Character.isLowerCase(ch);
+    }
+</code></pre>
+
+<p><strong><em>Task 2</em></strong></p>
+<ul>
+<li>Write a method to determine if a character is upper case.</li>
+<li>Signature of method is:<ul>
+<li><em>public static boolean isUpperCase(char ch)</em></li>
+</ul>
+</li>
+<li>Method returns <em>true</em> if character is upper case else it returns <em>false</em></li>
+</ul>
+<p><strong><em>Task 2 Solution</em></strong></p>
+<pre><code>    //Task 2
+    public static boolean isUpperCase(char ch)
+    {
+        return Character.isUpperCase(ch);
+    }
+</code></pre>
+
+<p><strong><em>Task 3</em></strong></p>
+<ul>
+<li>Write a method to convert a character to upper case.</li>
+<li>Signature of method is:<ul>
+<li><em>public static void toUpper(char ch)</em></li>
+</ul>
+</li>
+<li>Assume that <em>char ch</em> is a letter (a - z, A - Z)</li>
+</ul>
+<p><strong><em>Task 3 Solution</em></strong></p>
+<pre><code>    //Task 3
+    public static char toUpper(char ch)
+    {
+        return Character.toUpperCase(ch);
+    }
+</code></pre>
+
+<p><strong><em>Task 4</em></strong></p>
+<ul>
+<li>Write a method to count the number of words in a String object.</li>
+<li>Signature of method is:<ul>
+<li><em>public static int wordCount(String string)</em></li>
+<li>Method returns the number of words </li>
+<li>Hint: consider using <em>Character.isWhitespace(char ch)</em><ul>
+<li>See documentation <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Character.html">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 4 Solution</em></strong></p>
+<p>The following might be one's first attempt:</p>
+<pre><code>    //Task 4
+    public static int wordCount(String string)
+    {
+        int wordTotal = 1;
+        int index = 0;
+        while(index &lt; string.length())
+        {
+            char thisChar = string.charAt(index);
+            if(Character.isWhitespace(thisChar))
+            {
+                wordTotal += 1;
+            }
+            index += 1;
+        }
+        return wordTotal;
+    }
+</code></pre>
+
+<p>The above method will give the correct answer provided:</p>
+<ul>
+<li>there are no leading or trailing spaces</li>
+<li>each word is separated by only a single space.</li>
+</ul>
+<p>We need something better.</p>
+<p>We allow for leading and trailing whitespace in the string:</p>
+<ul>
+<li>Using the <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String.trim</a> method removes these should they exist (it creates a copy without the leading or trailing spaces).</li>
+</ul>
+<p>Then we must consider that 2 words may be separated by more than 1 whitespace.</p>
+<ul>
+<li>Simply assuming the number of whitespace to represent the number of words won't work.</li>
+<li>Two sample solutions are provided (many are possible). One derives from Stackoverflow, the other is homegrown.</li>
+</ul>
+<p>The homegrown solution follows. But first study Figure 1 on which the design of the code is based.</p>
+<ul>
+<li>There are two states to consider as we iterate through a phrase<ul>
+<li>Either we increment the word count at a particular position</li>
+<li>Or we do not increment the count.</li>
+</ul>
+</li>
+<li>From Figure 1 you will observe that we increment the count only when these conditions apply:<ul>
+<li>The value of prevWhite is TRUE (the previous character is whitespace)</li>
+<li>The current character is not whitespace (we are in a word)</li>
+</ul>
+</li>
+<li>Also observe that:<ul>
+<li>When we increment the count we also reset the prevWhite state to FALSE.</li>
+<li>When we are not in a word and the prevWhite is FALSE, we reset it to TRUE.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Word Count method analysis" src="img/15.png"></p>
+<pre><code>    enum State {TRUE, FALSE};
+    /**
+     * Counts the number of words in a phrase. 
+     * A word is defined as any grouping of characters separated by whitespace.
+     * 
+     * Here is the algorithmic code on
+     * which the method is based:
+     * 
+     * We use an enum State to keep track of previous state of character
+     *  TRUE if previous character a whitespace [prevWhite == TRUE]
+     *  FALSE otherwise
+     *  
+     * begin method
+     *  trim leading and trailing whitespace
+     *  return 0 if no non white characters remain
+     *  initialize word count to zero
+     *  initialize prevWhite to TRUE
+     *  initialize loop index to zero
+     *  loop for index == 0 to less than phrase length
+     *      extract the current character from the phrase
+     *      if in a word and prevWhite TRUE
+     *          increment word count
+     *          set state prevWhite to FALSE
+     *      end if
+     *      if not in a word and prevWhite FALSE
+     *          set prevWhite TRUE
+     *      end if
+     *      increment loop index       
+     *  end loop
+     *  return word count
+     * end method
+     * 
+     * @param phrase to be parsed for individual words
+     * @return the number of words in the phrase
+     */
+    public static int wordCount2(String phrase)
+    {
+        phrase.trim();//removes all leading and trailing whitespace
+        if(phrase.length() == 0) return 0;//allows for a phase all whitespace
+
+        int wordCount = 0;
+        State prevWhite = State.TRUE;
+        int index = 0;
+        while(index &lt; phrase.length())
+        {
+            char ch = phrase.charAt(index);
+            if(Character.isWhitespace(ch) == false &amp;&amp; prevWhite == State.TRUE)
+            {
+                wordCount += 1;
+                prevWhite = State.FALSE;
+            }
+            if(Character.isWhitespace(ch) == true &amp;&amp; prevWhite == State.FALSE)
+            {
+                prevWhite = State.TRUE;
+            }
+            index += 1;
+        }
+        return wordCount;
+    }
+</code></pre>
+
+<p>Here is another working solution:</p>
+<pre><code>    /**
+     * This method is based on ideas obtained from stackoverflow at:
+     * http://stackoverflow.com/questions/8102754/java-word-count-program
+     * 
+     * Counts the number of words in a phrase. 
+     * A word is defined as any grouping of characters separated by whitespace.
+     * 
+     * Here is the algorithmic code on
+     * which the method is based:
+     * 
+     * begin method
+     *      Remove leading and trailing white space from the phrase Declare and
+     *      initialise a boolean flag to true The purpose of the flag is to indicate
+     *      whether or not the previous character is a whitespace or not
+     * 
+     *      loop from 0 to less than length phrase 
+     *          if current char whitespace 
+     *              set flag true
+     *          endif
+     *          elseif flag true
+     *              increment word count
+     *              set flag false
+     *              end elseif
+     *      endloop
+     *      return word count
+     * end method
+     * 
+     * @param phrase to be parsed for individual words
+     * @return the number of words in the phrase
+     */
+
+    public static int wordCount(String phrase)
+    {
+        phrase.trim();
+
+        int wordCount = 0;
+        boolean prevCharWhiteSpace = true;
+
+        for (int i = 0; i &lt; phrase.length(); i += 1)
+        {
+            if (Character.isWhitespace(phrase.charAt(i)))
+            {
+                prevCharWhiteSpace = true;
+            }
+            else if (prevCharWhiteSpace)
+            {
+                wordCount += 1;
+                prevCharWhiteSpace = false;
+            }
+        }
+        return wordCount;
+    }
+</code></pre>
+
+<p>A simple test method (showing sample results) is depicted in Figure 2.
+<img alt="Figure 2: Test word count" src="img/16.png"></p>
+<p><strong><em>Task 5</em></strong></p>
+<ul>
+<li>Write a method to count the number of occurrences of a specified character <em>char ch</em> in a String object.</li>
+<li>The signature of the method is:<ul>
+<li><em>public static int characterCount(String string, char ch)</em></li>
+</ul>
+</li>
+<li>Method returns the number of characters discovered</li>
+</ul>
+<p><strong><em>Task 5 Solution</em></strong></p>
+<pre><code>    //Task 5
+    public static int characterCount(String string, char ch)
+    {
+        int charCount = 0;
+        for(int index = 0; index &lt; string.length(); index += 1)
+        {
+            char thisChar = string.charAt(index);
+            if(thisChar == ch)
+            {
+                charCount += 1;
+            }
+        }
+        return charCount;
+    }
+</code></pre>
+
+<p><strong><em>Task 6</em></strong></p>
+<ul>
+<li>Write a method to determine if a specified String object is a palindrome</li>
+<li>A palindrome is a string that reads the same backwards as forwards<ul>
+<li>Acceptable example: Able was I ere I saw Elba</li>
+<li>Note: ignore case</li>
+</ul>
+</li>
+<li>The signature of the method is:</li>
+</ul>
+<p><strong><em>Task 6 Solution</em></strong></p>
+<pre><code>    //Task 6  
+    public static boolean isPalindrome(String string)
+    {
+        int length = string.length();
+        int index = 0;
+        while(index &lt; string.length()/2)
+        {
+            if(!isEqualIgnoreCase(string.charAt(index), string.charAt(length - 1 - index)))
+            {
+                return false;
+            }
+            index += 1;
+        }
+        return true;
+
+    }
+
+    //Task 6  
+    public static boolean isPalindrome2(String string)
+    {
+        String reverse = reverse(string);
+        return string.equalsIgnoreCase(reverse);
+
+    }
+    //helpers for Task 6
+    /**
+     * Checks if two primitive char types are equal ignoring case
+     * @param ch1 a primitive char
+     * @param ch2 another primitive char
+     * @return true of ch1 equals ch2 ignoring case else false
+     */
+    public static boolean isEqualIgnoreCase(char ch1, char ch2)
+    {
+        return Character.toLowerCase(ch2) == Character.toLowerCase(ch2);
+    }
+
+    /**
+     * Create a string, the reverse of string
+     * @param the string to be reversed
+     * @return a copy of string reversed
+     */
+    public static String reverse(String string)
+    {
+        return new StringBuilder(string).reverse().toString();
+    }
+</code></pre>
+
+<p><strong><em>Test methods</em></strong></p>
+<p>Add the following method at the foot of <em>CharString</em>:</p>
+<pre><code>    public static void main(String[] args)
+    {
+        System.out.println(&quot;Task 1&quot;);
+        System.out.println(&quot;a is lower case &quot; + isLowerCase('a'));
+        System.out.println(&quot;A is lower case &quot; + isLowerCase('A'));
+
+        System.out.println();
+        System.out.println(&quot;Task 2&quot;);        
+        System.out.println(&quot;a is upper case &quot; + isUpperCase('a'));
+        System.out.println(&quot;A is upper case &quot; + isUpperCase('A'));
+
+        System.out.println();
+        System.out.println(&quot;Task 3&quot;);       
+        System.out.println(&quot;a to uppper case is &quot; + toUpper('a'));
+        System.out.println(&quot;A to upper case is &quot; + toUpper('A'));
+
+        String s = &quot;Able was I ere I saw Elba&quot;;
+
+        System.out.println();
+        System.out.println(&quot;Task 4&quot;);
+        System.out.println(&quot;Word count is &quot; + wordCount(s));
+
+        char ch = 'a';
+        System.out.println();
+        System.out.println(&quot;Task 5&quot;);
+        System.out.println(&quot;Number of  &quot; + ch + &quot; characters in &quot; + s + &quot; is &quot; + characterCount(s, ch));
+
+        System.out.println();
+        System.out.println(&quot;Task 6&quot;);
+        System.out.println(s + &quot; is a palindrome? &quot; + isPalindrome(s));
+        System.out.println(s + &quot; is a palindrome? &quot; + isPalindrome2(s));
+
+    }
+</code></pre>
+
+<p>Invoke the method <em>main</em>: the output as shown in Figure 1 should be generated for correctly working methods.
+<img alt="Figure 1: Testing methods in class CharString" src="img/07.png"></p>
+<p>You may use this class to more thoroughly test the word count and isPalindrome methods:</p>
+<pre><code>public class TestCharString
+{
+    public static void testWordCount()
+    {
+        String[] phrases = {&quot; the &quot;, &quot; the&quot;, &quot;the&quot;, 
+                &quot;the the&quot;, &quot; the  the &quot;, 
+                &quot;the the the&quot;, 
+                &quot; the  the  the    the &quot;};
+
+        for(String phrase : phrases)
+        {
+            System.out.println(&quot;This phrase \&quot;&quot; + phrase + &quot;\&quot; has &quot; 
+                + CharString.wordCount(phrase) + &quot; word(s)&quot;);
+        }
+    }
+
+    public static void testPalindrome()
+    {
+        String [] phrases = {&quot;Able was I ere I saw Elba&quot;, &quot;able was i ere i saw elba&quot;, &quot;able was&quot;};
+        for(String phrase : phrases)
+        {
+            boolean b = CharString.isPalindrome(phrase);
+            String status = b ? &quot; is a palindrome&quot; : &quot; is not a palindrome&quot;;
+            System.out.println(&quot;\&quot;&quot; + phrase +&quot;\&quot;&quot; + status);
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        testWordCount();
+        testPalindrome();
+    }
+  }
+}
+</code></pre>
+
+<p><strong><em>Task 7</em></strong></p>
+<p>Write a method to sort an array of Java String object. The method should be similar to that already encountered in the labs called quadraticSort.</p>
+<ul>
+<li>quadraticSort(int[]) is provided in the project sort, included with this assignment.</li>
+<li>The signature of the method to be written is<ul>
+<li>public static void quadraticSort(String[] s)</li>
+</ul>
+</li>
+<li>You are required to write a helper class to swap or exchange two objects within the String array<ul>
+<li>Use as model swap(int[], int, int)</li>
+</ul>
+</li>
+<li>A test class TestSort is provided. Use it to check the output from your code.</li>
+</ul>
+<p><strong><em>Task 7 Solution</em></strong></p>
+<pre><code>public class Sort
+{
+    /**
+     * A homespun quadratic sorting algorithm
+     * Probably the worst sorting algorithm in the world
+     * Best O(n2), Average O(n2), Worst O(n2)
+     * Algorithmic code:
+     * for i ← 0 to length(A)
+     *     for j ← i to length(A)
+     *         if( A[j] &lt; A[i])
+     *            swap A[j] and A[i]
+     *         endif
+     *     endfor
+     * endfor
+     *   
+
+     * @param a the 1-d integer array to be sorted
+     */
+    public static void quadraticSort(int[] a)
+    {
+        for (int i = 0; i &lt; a.length; i += 1)
+        {
+            for (int j = i; j &lt; a.length; j += 1)
+            {
+                if (a[j] &lt; a[i])
+                {
+                    swap(a, i, j);
+                }
+            }
+        }
+    } 
+
+    public static void swap(int[] a, int to, int from)
+    {
+        int temp = a[to];
+        a[to] = a[from];
+        a[from] = temp;
+    }
+
+    //sort strings
+
+    public static void quadraticSort(String[] s)
+    {
+         for (int i = 0; i &lt; s.length; i += 1)
+        {
+            for (int j = i; j &lt; s.length; j += 1)
+            {
+                if (s[j].compareTo(s[i]) &lt; 0)
+                {
+                    swap(s, i, j);
+                }
+            }
+        }
+
+    }
+
+    public static void swap(String[] s, int to, int from)
+    {
+        String temp = s[to];
+        s[to] = s[from];
+        s[from] = temp;
+    }
+}
+</code></pre>
+
+<p>Here is the TestClass:</p>
+<pre><code>public class TestSort
+{
+    public static void stringSort()
+    {
+        //Test string sort
+        String[] s = {&quot;ggg&quot;, &quot;ddd&quot;, &quot;eeeff&quot;, &quot;aaa&quot;, &quot;bbb&quot;, &quot;xxx&quot;, &quot;zzz&quot;, &quot;ccc&quot;, &quot;xabcdef&quot;, &quot;iiiiiii&quot;};
+        System.out.print(&quot;\nBefore sorting: &quot;);
+        for(String str : s)
+        {
+            System.out.print(str + &quot; &quot;);
+        }
+
+        Sort.quadraticSort(s);
+
+        System.out.print(&quot;\n After sorting: &quot;);
+        for(String str : s)
+        {
+            System.out.print(str + &quot; &quot;);
+        }
+    }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Q4</h1>
+<p><strong><em>Task 1 User Message</em></strong></p>
+<p>Write a method in User to send a message.</p>
+<ul>
+<li>Signature: <em>public void sendMessage(Message message)</em></li>
+<li>Add the message to the outbox of the sender and inbox of target.</li>
+</ul>
+<p><strong><em>Task 1 Message Solution</em></strong></p>
+<pre><code>    public void sendMessage(Message message)
+    {
+        outbox.add(message);
+        message.to.inbox.add(message);
+    }
+</code></pre>
+
+<p><strong><em>Task 2: User Friendship</em></strong></p>
+<p>Presently the <em>befriend</em> method in User ensures a user cannot befriend itself.</p>
+<ul>
+<li>Modify the <em>befriend</em> method to ensure that the same user cannot be befriended twice.</li>
+</ul>
+<p>Here is the skeleton code:</p>
+<pre><code>    public void befriend(User friend)
+    {
+        if(friend == this)
+        {
+            System.out.println(&quot;Opps! You seem to have made a mistake in attempting to befriend yourself&quot;);
+        }
+        else if(friendshipsContains(friend))
+        {
+            System.out.println(friend.firstName +&quot; is already a friend&quot;);
+        }
+        else
+        {
+            Friendship friendship = new Friendship(this, friend);
+            friendships.add(friendship);
+        }
+    }
+</code></pre>
+
+<p>As you can see from the above skeleton code, you are required to write the method <em>boolean friendshipsContains(User friend)</em></p>
+<ul>
+<li>The method should check the instance variable <em>friendships</em> and return <em>true</em> if the argument <em>friend</em> is present in the list (as a <em>targetUser</em>), else <em>false</em>.</li>
+</ul>
+<p><strong><em>Task 2 User Friendship Solution</em></strong></p>
+<pre><code>    public void befriend2(User friend)
+    {
+        if(friend == this)
+        {
+            System.out.println(&quot;Opps! You seem to have made a mistake in attempting to befriend yourself&quot;);
+        }
+        else if(friendshipsContains(friend))
+        {
+            System.out.println(friend.firstName +&quot; is already a friend&quot;);
+        }
+        else
+        {
+            Friendship friendship = new Friendship(this, friend);
+            friendships.add(friendship);
+        }
+    }
+
+    private boolean friendshipsContains(User friend)
+    {
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser == friend)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+</code></pre>
+
+<p><strong><em>Task 3: Group</em></strong></p>
+<p>Develop a class named <strong><em>Group</em></strong> to implement the concept of a group of friends such as family, friends, clients and so on.</p>
+<ul>
+<li>Its fields are <ul>
+<li><em>String groupName</em> <ul>
+<li>to represent the name of the group, example <em>clients</em></li>
+</ul>
+</li>
+<li><em>ArrayList&lt;User> members;</em> <ul>
+<li>to contain a list of users, members of this group</li>
+</ul>
+</li>
+<li>A constructor<ul>
+<li><em>public Group(String groupName)</em></li>
+</ul>
+</li>
+<li>A method to add a new member to the group<ul>
+<li><em>public void addGroupMember(User user)</em></li>
+</ul>
+</li>
+<li>A method to broadcast a message to the entire group<ul>
+<li><em>public void broadcastMessage(Message message)</em></li>
+</ul>
+</li>
+<li>A private helper method to print the group list as a column of data<ul>
+<li><em>private String groupList()</em></li>
+</ul>
+</li>
+<li>Override the <em>toString</em> method<ul>
+<li><em>public String toString()</em></li>
+</ul>
+</li>
+<li>Test your code by invoking <em>TestSpacebook addGroups</em><ul>
+<li>Figure 1 shows typical output</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here is the skeleton code:</p>
+<pre><code>import ...
+
+public class Group
+{
+    String groupName;
+
+    ArrayList&lt;User&gt; members;
+
+    public Group(String groupName)
+    {
+        ...
+    }
+
+    public void addGroupMember(User user)
+    {
+        ...
+
+    }
+    /**
+     * Send a message to the inbox of each group member
+     */
+    public void broadcastMessage(Message message)
+    {
+        ...
+        ...
+        ...
+    }
+
+    /*
+     * @return all the group names in a single string
+     * Use the \n between each name to ensure printed on separate lines
+     */
+    private String groupList()
+    {
+        String names = &quot;&quot;;
+        ....
+        return names;
+    }
+    @Override
+    public String toString() {
+        return &quot;GroupName=&quot; + groupName + &quot;\n&quot; + groupList();
+    }   
+}
+</code></pre>
+
+<p><img alt="Figure 1: Invoking addGroups" src="img/10.png"></p>
+<p><strong><em>Task 3 Group Solution</em></strong></p>
+<pre><code>import java.util.ArrayList;
+
+public class Group
+{
+    String groupName;
+
+    ArrayList&lt;User&gt; members = new ArrayList&lt;&gt;();
+
+    public Group(String groupName)
+    {
+        this.groupName = groupName;
+    }
+
+    public void addGroupMember(User user)
+    {
+        members.add(user);
+
+    }
+    public void broadcastMessage(Message message)
+    {
+        for(User user : members)
+        {
+            user.inbox.add(message);
+        }
+    }
+
+    private String groupList()
+    {
+        String names = &quot;&quot;;
+        for(User user : members)
+        {
+            names += user.firstName + &quot;\n&quot;;
+        }
+        return names;
+    }
+    @Override
+    public String toString() {
+        return &quot;GroupName=&quot; + groupName + &quot;\n&quot; + groupList();
+    }
+
+}
+
+</code></pre>
+
+<p><strong><em>Task 4: User Status</em></strong></p>
+<p>In the <strong>User</strong> class:</p>
+<ul>
+<li>Use an <em>enum</em> to define status:<ul>
+<li>enum Status {ONLINE, OFFLINE, BUSY, AWAY}</li>
+</ul>
+</li>
+<li>Create a <em>Status</em> field</li>
+<li>Set the default status field to "ONLINE" at User instantiation</li>
+<li>Write a method to set the status field's value<ul>
+<li>Signature: <em>public void setStatus(...)</em></li>
+</ul>
+</li>
+<li>Write a method to display a list of friends filtered based on status<ul>
+<li>Signature: <em>public void displayFriends(Status status)</em></li>
+<li>Test by invoking <em>displayFriends(Status status)</em> on a <em>User</em> object with various Status values</li>
+<li>Test by invoking <em>displayFriends()</em> on a <em>TestSpacebook</em> object</li>
+<li>See Figure 2 for sample output</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 2: Sample output displayFriends" src="img/11.png"></p>
+<p><strong><em>Task 4: User Status Solution</em></strong></p>
+<pre><code>
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+enum Status {ONLINE, OFFLINE, BUSY, AWAY} //Task 4 Solution
+enum GroupName {FAMILY,FRIENDS, CLIENTS}
+public class User
+{
+    String firstName;
+    String lastName;
+    int age;
+    String nationality;
+    String email;
+    String password;
+
+    Status status;//Task 4 Solution
+
+    ArrayList&lt;Friendship&gt; friendships   = new ArrayList&lt;&gt;();
+    ArrayList&lt;Message&gt; inbox            = new ArrayList&lt;&gt;();
+    ArrayList&lt;Message&gt; outbox           = new ArrayList&lt;&gt;(); 
+
+    HashMap&lt;String, Group&gt; groups = new HashMap&lt;&gt;();
+
+    /**
+     * Constructs an object intended for testing only
+     * The firstName determined by caller
+     * Remaining fields used default data
+     */
+    public User(String firstName)
+    {
+        setState(firstName, &quot;Simpson&quot;, firstName+&quot;@simpson.com&quot;, &quot;secret&quot;);
+    }
+
+    public User(String firstName, String lastName, String email, String password)
+    {
+        setState(firstName, lastName, email, password);
+    }  
+
+    public void setState(String firstName, String lastName, String email, String password)
+    {
+        this.firstName  = firstName;
+        this.lastName   = lastName;
+        this.email      = email;
+        this.password   = password;
+        this.status     = Status.ONLINE;//Task 4 Solution
+    }  
+
+    public void setStatus(Status status)//Task 4 Solution
+    {
+        this.status = status;
+    }
+
+    public void broadcastMessage(Subject subject, String messageText)
+    {
+        for(Friendship f : friendships)
+        {
+            Message message = new Message(subject, this, f.targetUser, messageText);
+            outbox.add(message);
+            f.targetUser.inbox.add(message);
+        }
+    }
+
+    public void sendMessage(Message message)
+    {
+        outbox.add(message);
+        message.to.inbox.add(message);
+    }
+
+    public void sendMessage(Subject subject, User to, String messageText)
+    {
+        Message message = new Message(subject,this, to, messageText);
+        outbox.add(message);
+        to.inbox.add(message);
+    }
+
+    public void displayOutbox()
+    {
+        for(Message msg : outbox)
+        {
+            msg.displayMessage();
+        }
+    }
+
+    public void displayInbox()
+    {
+        for(Message msg : inbox)
+        {
+            msg.displayMessage();
+        }
+    }
+
+    public void befriendOriginal(User friend)
+    {
+        //if(!(friend == this))
+        if(friend != this)
+        {
+            Friendship friendship = new Friendship(this, friend);
+            friendships.add(friendship);
+        }
+        else
+        {
+            System.out.println(&quot;Opps! You seem to have made a mistake in attempting to befriend yourself&quot;);
+        }
+    }
+
+    public void befriend(User friend)
+    {
+        if(friend == this)
+        {
+            System.out.println(&quot;Opps! You seem to have made a mistake in attempting to befriend yourself&quot;);
+        }
+        else if(friendshipsContains(friend))
+        {
+            System.out.println(&quot;You attempted to befriend &quot; + friend.firstName +&quot; who is already a friend&quot;);
+        }
+        else
+        {
+            Friendship friendship = new Friendship(this, friend);
+            friendships.add(friendship);
+        }
+    }
+
+    private boolean friendshipsContains(User friend)
+    {
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser == friend)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void unfriendAll()
+    {
+        for(int i = friendships.size() - 1; i &gt;= 0; i -= 1)
+        { 
+            friendships.remove(i);
+        }
+    }
+
+    public void unfriend(User friend) 
+    {
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser == friend)
+            {
+                friendships.remove(friendship);
+                return;
+            }
+        }
+    }
+
+    public void displayFriends() 
+    {
+        if(friendships.isEmpty())
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+        System.out.println(&quot;I'm &quot; + this.firstName + &quot; &quot; + this.lastName + &quot; and these are my \&quot;friends\&quot; hehe :-)&quot;);
+        for(Friendship friendship : friendships)
+        {
+            System.out.println(&quot;My friend &quot;+friendship.targetUser.firstName + &quot; is &quot; + friendship.targetUser.status);
+        }
+    }
+
+    public void displayFriends(Status status) //Task 4 Solution
+    {
+        if(friendships.isEmpty())
+        {
+            System.out.println(&quot;Unfortunately you have no friends&quot;);
+        }
+        System.out.println(&quot;I'm &quot; + this.firstName + &quot; &quot; + this.lastName + &quot; and these are my &quot; + status+ &quot; \&quot;friends\&quot; hehe :-)&quot;);
+        for(Friendship friendship : friendships)
+        {
+            if(friendship.targetUser.status == status)
+            {
+                System.out.println(&quot;My friend &quot;+friendship.targetUser.firstName + &quot; is &quot; + friendship.targetUser.status);
+            }
+        }
+    }
+    public void addGroup(String groupName)
+    {
+        groups.put(groupName, new Group(groupName));
+    }
+
+    public void addGroupMember(String groupName, User user)
+    {
+        Group group = groups.get(groupName);
+        group.addGroupMember(user);
+    }
+
+    public void broadcastMessage(String groupName, Message message)
+    {
+        groups.get(groupName).broadcastMessage(message);
+    }
+
+    /**
+     * 
+     * @param content   the content sought
+     * @param msg       the array Message objects to be searched
+     * @return          returns the first Message containing content, else null
+     */
+    public Message search(String content, ArrayList&lt;Message&gt; msg)
+    {
+        int index = 0;
+        while(index &lt; msg.size())
+        {
+            Message thisMsg = msg.get(index);
+            if(content.equals(thisMsg.messageText))
+            {
+                return thisMsg;
+            }
+            index += 1;
+        }
+        return null;
+    }
+
+    /**
+     * 
+     * @param subject   seeking a Message object with Subject subject
+     * @param msg       the array Message objects to be searched
+     * @return          returns the first Message with subject matching param, else null
+     */
+    public Message search(Subject subject, ArrayList&lt;Message&gt; msg)
+    {
+        int index = 0;
+        while(index &lt; msg.size())
+        {
+            Message thisMsg = msg.get(index);
+            if(subject == thisMsg.subject)
+            {
+                return thisMsg;
+            }
+            index += 1;
+        }
+        return null;        
+    }
+}
+</code></pre>
+
+<p><strong><em>Task 5: Message</em></strong></p>
+<p>Add a subject field to the <strong>Message</strong> class</p>
+<ul>
+<li>Define enum Subject {PERSONAL, FAMILY, WORK, GENERAL}</li>
+<li><em>Subject subject</em></li>
+<li>Modify <em>Message</em> constructor to include a <em>Subject</em> parameter </li>
+<li>Complete the <em>displayMessage</em> method in <em>Message</em> to print output formatted as shown in Figure 3.</li>
+<li>Test by invoking <em>displayMessages</em> on <em>TestSpacebook</em></li>
+</ul>
+<pre><code>//Skeleton code
+
+...
+
+public class Message
+{
+    Subject   ...;
+    String    messageText;
+    User      from;
+    User      to;
+
+    public Message(Subject subject, User from, User to, String messageText)
+    {
+        this.subject        = subject;
+        this.from           = from;
+        this.to             = to;
+        this.messageText    = messageText;
+    } 
+
+    public void displayMessage()
+    {
+        String nameFrom = from.firstName;
+        String nameTo   = to.firstName;
+        System.out.println(... + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo);
+    }
+
+    public void displayMessageContent()
+    {
+        System.out.println(messageText);
+    }
+}
+</code></pre>
+
+<p><img alt="Figure 3: Displaying messages including message subject" src="img/12.png"></p>
+<p><strong><em>Task 5 Solution</em></strong></p>
+<pre><code>
+enum Subject {PERSONAL, FAMILY, WORK, GENERAL} //Task 5 Solution
+
+public class Message
+{
+    Subject   subject; //Task 5 Solution
+    String    messageText;
+    User      from;
+    User      to;
+
+    public Message(Subject subject, User from, User to, String messageText) //Task 5 Solution
+    {
+        this.subject        = subject;
+        this.from           = from;
+        this.to             = to;
+        this.messageText    = messageText;
+    } 
+
+    public void displayMessage() //Task 5 Solution
+    {
+        String nameFrom = from.firstName;
+        String nameTo   = to.firstName;
+        System.out.println(&quot;Message subject: &quot; + subject.name() + &quot; &quot; + nameFrom + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo);
+    }
+
+    public void displayMessageContent()
+    {
+        System.out.println(messageText);
+    }
+}
+</code></pre>
+
+<p><strong><em>Task 6 User</em></strong></p>
+<p>Write a method in User to display an array list of messages.</p>
+<ul>
+<li>Signature <em>public void displayMessages(ArrayList&lt;Message> messages)</em></li>
+<li>Invoke the existing <em>Message</em> method <em>displayMessage</em> for each element in the list</li>
+</ul>
+<p><strong><em>Task 6 User</em></strong></p>
+<p>Write a method in <strong>User</strong> class to display an array list of messages.</p>
+<ul>
+<li>Signature <em>public void displayMessages(ArrayList&lt;Message> messages)</em></li>
+<li>Hint: In this method, invoke the existing <em>Message</em> method <em>displayMessage</em> for each element in the list</li>
+<li>Test the method by invoking <em>TestMessaging displayMessageList()</em>.</li>
+<li>Sample out depicted in Figure 4</li>
+</ul>
+<p><img alt="Figure 4: Sample output displayMessageList()" src="img/13.png"></p>
+<p><strong><em>Task 6 Solution</em></strong></p>
+<pre><code>    public void displayMessages(ArrayList&lt;Message&gt; messages)
+    {
+        for(Message message : messages)
+        {          
+            message.displayMessage();           
+        }
+    }
+</code></pre>
+
+<p><strong><em>Task 7 User Message</em></strong></p>
+<p>Write a method to display an array list of messages filtered by subject:</p>
+<ul>
+<li>Signature <em>public void displayMessages(Subject subject, ArrayList&lt;Message> messages)</em></li>
+<li>Hint: Invoke the existing <em>Message</em> method <em>displayMessage</em> for each element in the list</li>
+<li>Test the method by invoking <em>TestMessaging displayMessageList(Subject subject)</em>.</li>
+<li>Sample out depicted in Figure 5</li>
+</ul>
+<p><img alt="Figure 5: Sample output displayMessageList()" src="img/14.png"></p>
+<p><strong><em>Task 7 User Message Solution</em></strong></p>
+<pre><code>    public void displayMessages(Subject subject, ArrayList&lt;Message&gt; messages)
+    {
+        for(Message message : messages)
+        {
+            if(message.subject == subject)
+            {
+                message.displayMessage();
+            }
+        }
+    }
+</code></pre>
+
+<p><strong><em>Task 8 MessageSort Message array</em></strong></p>
+<p>Write a method in MessageSort to sort an array of messages.</p>
+<ul>
+<li>Signature: <em>public static void sortMessages(Message[] messages)</em></li>
+<li>Use the sorting algorithm developed in this assignment to sort the list</li>
+<li>Test your code by invoking <em>sortArrayMessages</em> on an instance of <em>TestMessaging</em> class provided (Figure 6)</li>
+</ul>
+<p><img alt="Figure 6: Sort array messages" src="img/08.png"></p>
+<p><strong><em>Task 8 MessageSort Message array Solution using a quadratic sort</em></strong></p>
+<pre><code>    public static void sortMessages(Message[] m)
+    {
+        for(int i = 1; i &lt; m.length; i += 1)
+        {
+            for(j = i; j &lt; m.length; j += 1) 
+            {
+                if(m[i].messageText.compareTo(m[j].messageText) &gt; 0)
+                {
+                    swap(m, i, j);
+                }
+            }
+        }  
+    }
+</code></pre>
+
+<p><strong><em>Task 9 MessageSort Message ArrayList</em></strong></p>
+<p>Write a method in MessageSort to sort an ArrayList of messages.</p>
+<ul>
+<li>Signature: <em>public void sortMessages(ArrayList&lt;Message> messages)</em></li>
+<li>Use the sorting algorithm developed in this assignment to sort the list</li>
+<li>Test your code by invoking <em>sortArrayListMessages</em> on an instance of <em>TestMessaging</em> class provided (Figure 7)</li>
+</ul>
+<p><img alt="Figure 7: Sort list messages" src="img/09.png"></p>
+<p><strong><em>Task 9 MessageSort Message ArrayList Solution</em></strong></p>
+<pre><code>    public static void sortMessages(ArrayList&lt;Message&gt; m)
+    {
+        for (int i = 0; i &lt; m.size(); i += 1)
+        {
+            for (int j = i; j &lt; m.size(); j += 1)
+            {
+                if (m.get(i).messageText.compareTo(m.get(j).messageText) &gt; 0)
+                {
+                    swap(m, i, j);
+                }
+            }
+        }
+    }
+</code></pre>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>

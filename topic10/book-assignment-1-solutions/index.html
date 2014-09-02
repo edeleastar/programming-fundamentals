@@ -1,0 +1,1195 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-10-A-Solutions </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Assignments</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-10-A-Solutions"> Lab-10-A-Solutions </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+          <a class="item" data-tab="07"> 07 </a>
+          <a class="item" data-tab="08"> 08 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-10-A-Solutions" class="ui tab stacked moodle-book segment">
+	     <h1>Readme</h1>
+<p>These are the solutions to assignment 1</p>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Guidelines</h1>
+<h2>Setup</h2>
+<p>Download the archive <em>assignment-1-solutions.zip</em> available <a href="archives/assignment-1-solutions.zip">here</a> and expand to a directory <em>workspaceBlueJ/assignments/assignment-1-solutions</em>.</p>
+<p>Your directory structure should be as depicted in Figure 1.</p>
+<p><img alt="Figure 1: directory structure" src="img/readme01.png"></p>
+<p>The folder <em>assignments-1-solutions</em> should contain <em>BlueJ</em> projects <em>arrays</em>, <em>notebook</em> ,<em>shapes</em> and <em>strings</em>. See Figure 2.</p>
+<p><img alt="Figure 2: projects in assignments-1-solution folder" src="img/readme02.png"></p>
+<p>The projects contain solution code to the questions in assignment-1</p>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Question 1 [Marks 7/100]</h1>
+<p>In this question you will work with the Circle class that you downloaded in the <em>shape</em> project folder int the folder <em>assignment-1</em>.</p>
+<h2>Task 1</h2>
+<ul>
+<li>Modify the default Circle constructor (Figure 1) by using the existing method <em>setState</em> to initialize the Circle object with the existing default values.</li>
+</ul>
+<p><img alt="Figure 1: Default Circle constructor" src="img/Q101.png"></p>
+<p><img alt="Figure 2: Skeleton of overloaded Circle constructor" src="img/Q102.png"></p>
+<h2>Task 1 Solution</h2>
+<p>Here is the existing constructor:</p>
+<pre><code>public Circle()
+    {
+        diameter = 30;
+        xPosition = 20;
+        yPosition = 60;
+        color = &quot;blue&quot;;
+        //Task 1: setState(...);
+        isVisible = false;
+    }
+</code></pre>
+
+<p>Here is the refactored constructor, the solution to Task 1:</p>
+<p>It is clear from the signature of <em>setState</em> what the numbers 30, 20 &amp; 60 refer to, namely the diameter, xPosition and yPostion respectively.</p>
+<pre><code>    public Circle()
+    {
+        setState(30, 20, 60, &quot;blue&quot;);
+        isVisible = false;
+    }
+</code></pre>
+
+<h2>Task 2</h2>
+<ul>
+<li>Add an overloaded constructor to the Circle class (Figure 2).<ul>
+<li>The constructor should have the following signature:<ul>
+<li><em>public Circle(int diameter)</em></li>
+</ul>
+</li>
+<li>Initialize the remaining fields in the Circle with the default values present in the existing default Circle constructor. See Figure 1.</li>
+<li>Use the existing method <em>setState</em> to initialize values.</li>
+</ul>
+</li>
+</ul>
+<h2>Task 2 Solution</h2>
+<p>Here is the skeleton code provided as part of the question:</p>
+<pre><code>    public Circle(int diameter)
+    {
+       //Task 2 setState(...);
+    }
+</code></pre>
+
+<p>Here is the solution, using the default values as instructed.</p>
+<p>It is clear from the signature of <em>setState</em> what the numbers 20 &amp; 30 refer to, namely the xPosition and yPostion respectively.</p>
+<pre><code>    public Circle(int diameter)
+    {
+       setState(diameter, 20, 60, &quot;blue&quot;);
+    }
+</code></pre>
+
+<h2>Task 3</h2>
+<ul>
+<li>Comment only those parts of Circle that you modify.</li>
+</ul>
+<h2>Task 3 Solution</h2>
+<p>Several acceptable variations exist. Here's one such:</p>
+<pre><code>    /**
+     * Default constructor uses private helper method setState to initialize fields
+     * See the signature of setState to ascertain to what arguments refer.
+     */
+    public Circle()
+    {
+        setState(30, 20, 60, &quot;blue&quot;);
+        isVisible = false;
+    }
+
+    ~~~
+    /**
+     * Overloaded constructor uses private helper method setState to initialize fields
+     * See the signature of setState to ascertain to what arguments refer.
+     * @param diameter the diameter of the Circle object being instantiated
+     */   
+     public Circle(int diameter)
+     {
+       setState(diameter, 20, 60, &quot;blue&quot;);
+     }
+</code></pre>
+
+<h2>Task 4</h2>
+<p>Write a method in Circle to calculate and return</p>
+<ul>
+<li>the area of the circle<ul>
+<li><em>public double area()</em></li>
+</ul>
+</li>
+</ul>
+<h2>Task 4 Solution</h2>
+<p>Here is the skeletion code provided:</p>
+<pre><code>    public double area()
+    {
+        //Task 4
+        return 0.0;
+    }
+</code></pre>
+
+<p>Here is the solution with sample commenting:</p>
+<pre><code>    /**
+     * Calculates and returns the area of the Circle object
+     *
+     * @return the area of the circle
+     */
+    public double area()
+    {
+        return Math.PI*diameter*diameter/4;
+    }
+</code></pre>
+
+<h2>Task 5</h2>
+<p>Write a method in Circle to calculate and return</p>
+<ul>
+<li>the circumference of the circle<ul>
+<li><em>public double circumference()</em></li>
+</ul>
+</li>
+</ul>
+<h2>Task 5 Solution</h2>
+<p>Here is the solution with sample commenting:</p>
+<pre><code>    /**
+     * Calculates and returns the circumference of the Circle object
+     *
+     * @return the circumference of the circle
+     */
+    public double circumference()
+    {
+        return Math.PI*diameter;
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Question 2 [Marks 15/100]</h1>
+<h2>Task 1</h2>
+<p>Implement a class named <em>Cylinder</em> (see Figure 1), specified as follows:</p>
+<ul>
+<li>The fields are to be<ul>
+<li><em>private int height</em></li>
+<li><em>private Circle base</em></li>
+</ul>
+</li>
+</ul>
+<h2>Task 1 Solution</h2>
+<p>Here is the Cylinder class code. The documentation will follow as the solution to Task 6.</p>
+<pre><code>public class Cylinder
+{
+    private Circle base;
+    private int height;
+}
+</code></pre>
+
+<h2>Task 2</h2>
+<p>Provide a single constructor with the following signature:</p>
+<ul>
+<li><em>public Cylinder(int height, Circle base)</em><ul>
+<li>Initialize the fields in the constructor.</li>
+</ul>
+</li>
+</ul>
+<h2>Task 2 Solution</h2>
+<pre><code>public class Cylinder
+{
+    private Circle base;
+    private int height;
+
+    public Cylinder(Circle base, int height)
+    {
+        this.base    = base;
+        this.height  = height;
+    }
+}
+</code></pre>
+
+<h2>Task 3</h2>
+<p>Write a method to calculate and return the </p>
+<ul>
+<li>volume of the cylinder<ul>
+<li><em>public double volume()</em></li>
+</ul>
+</li>
+</ul>
+<h2>Task 3 Solution</h2>
+<pre><code>    public double volume()
+    {
+        return Math.PI*diameter*diameter*height/4.0;
+    }
+</code></pre>
+
+<p>Alternative implementation:</p>
+<pre><code>    public double volume()
+    {
+        return Math.PI*Math.pow(base.getDiameter(), 2)*height/4.0;
+    }
+</code></pre>
+
+<h2>Task 4</h2>
+<p>Write a method to calculate and return the </p>
+<ul>
+<li>surface area of the cylinder that includes base, top and sides.<ul>
+<li>public double surfaceArea()</li>
+</ul>
+</li>
+</ul>
+<h2>Task 4 Solution</h2>
+<pre><code>    public double surfaceArea()
+    {
+        return 2*base.area() + base.circumference()*height;
+    }
+</code></pre>
+
+<p>Here we are assuming Circle class has </p>
+<ul>
+<li>method <em>area</em> to return the area and </li>
+<li>method <em>circumference</em> to return the circumference.</li>
+</ul>
+<p>Luckily we have already added these methods to Circle as part solution to Question 1.</p>
+<h2>Task 5</h2>
+<p>Write a getter (accessor) method to return the diameter of the cylinder</p>
+<ul>
+<li><em>public double getDiameter()</em></li>
+</ul>
+<h2>Task 5 Solution</h2>
+<pre><code>    public int getDiameter()
+    {
+        return base.getDiameter();
+    }
+</code></pre>
+
+<h2>Task 6</h2>
+<p>Document the class using Cone as a model.</p>
+<h2>Task 6 Solution</h2>
+<pre><code>/**
+ * @file    Cylinder.java
+ * @brief   This class describes a right circular cylinder and includes 
+ *                  methods to calculate properties such as surface area and volume.
+ * @version 1.0 April 1, 2014
+ * @author  jfitzgerald
+ */
+public class Cylinder
+{
+    private Circle base;
+    private int height;
+    /**
+     * Constructs a new Cylinder object defined by user-supplied parameters
+     * @param height    the height of the right circular cylinder
+     * @param base      reference to Circle object defining base of right circular cylinder
+     */       
+    public Cylinder(Circle base, int height)
+    {
+        this.base    = base;
+        this.height  = height;
+    }
+
+    public int getDiameter()
+    {
+        return base.getDiameter();
+    }
+    /**
+     * Calculates the volume of right circular cylinder object
+     * @return volume of right circular cylinder
+     */    
+    public double volume()
+    {
+        return Math.PI*base.getDiameter()*base.getDiameter()*height/4.0;
+    }
+
+    /**
+     * Calculates the volume of right circular cylinder object
+     * @return volume of right circular cylinder
+     */ 
+    public double volume2()
+    {
+        return Math.PI*Math.pow(base.getDiameter(), 2)*height/4.0;
+    }
+    /**
+     * Calculates the surface area of right circular cylinder object
+     * @return surface area (including circular base and top) of right circular cylinder
+     */ 
+    public double surfaceArea()
+    {
+        return 2*base.area() + base.circumference()*height;
+    }
+
+}
+</code></pre>
+
+<p><img alt="Figure 1: Solid cylinder" src="img/Q201.png"></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Question 3 [Marks 24/100]</h1>
+<h2>Task 1</h2>
+<p>Create a class named <em>Cylinder3D</em>.</p>
+<ul>
+<li>The purpose of the class is to display a solid cylinder in three dimensions<ul>
+<li>See Figure 1 </li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: Cylinder displayed in 3D" src="img/Q301.png"></p>
+<p>Use the supplied classes:</p>
+<ul>
+<li>Rectangle<ul>
+<li>to represent the cylinder wall</li>
+</ul>
+</li>
+<li>
+<p>Ellipse</p>
+<ul>
+<li>to represent the top and base</li>
+</ul>
+</li>
+<li>
+<p>The signature of the constructor is </p>
+<ul>
+<li><em>public Cylinder3D(int diameter, int height)</em></li>
+<li>Notice that unlike in the case of the Cylinder class, we are not using a Circle<ul>
+<li>the fields are<ul>
+<li><em>private int diameter</em></li>
+<li><em>private int height</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Task 1 Solution</h2>
+<p>Here is a partially documented outline of the class (supplied with the question):</p>
+<pre><code>/**
+ * Class to display a solid cylinder in three dimensions
+ * A cylinder viewed in 3D will appear as elliptical top and bottom
+ * We choose, arbitrarily, the minor diameter of the ellipse to be half the major diameter
+ */
+public class Cylinder3D
+{
+    //the basic cylinder
+    private int diameter;
+    private int height;
+    //in 3 D the top and bottom will appear as ellipses
+    private Ellipse top;
+    private Ellipse base;
+    //the wall will appear as a rectangle
+    private Rectangle wall;
+    //set the origin (x,y), the top left corner of imaginary rectangle
+    //enclosing the elliptical top of cylinder
+    int xPosition;
+    int yPosition;
+
+
+    public Cylinder3D(int diameter, int height)
+    {
+        ...
+    }
+
+    private void initialize3D()
+    {
+        //choose the origin of the cylinder as viewed in 3D at (0,0)
+        //Recall that we have arbitrarily decided the minor diameter is half the major diameter
+        //Note that the origin of the ellipse is top left corner of a containing rectangle
+        //Therefore the y coord of origin of wall will be diameter/4
+        top     = new Ellipse(...);
+        wall    = new Rectangle(...);
+        base    = new Ellipse(...);
+    }
+
+    public void moveTo(int x, int y)
+    {
+
+    }
+}
+</code></pre>
+
+<p>Here is the solution code to Task 1.</p>
+<pre><code>/**
+ * Class to display a solid cylinder in three dimensions
+ * A right circular cylinder viewed in 3D will appear as elliptical top and bottom
+ * We choose, arbitrarily, the minor diameter of the ellipse to be half the major diameter
+ */
+public class Cylinder3D
+{
+    //geometric properties of cylinder
+    private int diameter;
+    private int height;
+
+    //in 3 D the top and bottom will appear as ellipses
+    private Ellipse top;
+    private Ellipse base;
+    //the wall will appear as a rectangle
+    private Rectangle wall;
+    //set the origin (x,y), the top left corner of imaginary rectangle
+    //enclosing the elliptical top of cylinder
+    int xPosition;
+    int yPosition;
+
+    /**
+     * Construct a right circular rectangle defined by parameters diameter and height
+     * Initialize the origin to (0, 0), remembering the origin is the top-left
+     * corner of the imaginery rectangle bounding the top ellipse
+     *
+     * @param diameter the diameter of the right circular cylinder
+     * @param height the height of the right circular cylinder
+     */
+    public Cylinder3D(int diameter, int height)
+    {
+        this.diameter   = diameter;
+        this.height     = height;
+        //initial position set to origin (0,0)    
+        xPosition       = 0;
+        yPosition       = 0;
+
+        initialize3D();
+    }
+
+    private void initialize3D()
+    {
+        //choose the origin of the cylinder as viewed in 3D at (0,0)
+        //Recall that we have arbitrarily decided the minor diameter is half the major diameter
+        //Note that the origin of the ellipse is top left corner of a containing rectangle
+        //Therefore the y coord of origin of wall will be diameter/4
+        top     = new Ellipse(diameter, diameter/2, xPosition, yPosition, &quot;black&quot;);
+        wall    = new Rectangle(diameter, height, xPosition, yPosition + diameter/4, &quot;black&quot;);
+        base    = new Ellipse(diameter, diameter/2, xPosition, yPosition + height, &quot;black&quot;);
+    }
+}
+</code></pre>
+
+<h2>Task 2</h2>
+<ul>
+<li>
+<p>Write a method to move the cylinder</p>
+<ul>
+<li><em>public moveTo(int x, int y)</em></li>
+</ul>
+</li>
+<li>
+<p>Assume the minor diameter of both ellipses is the major diameter/2 (Figure 2).</p>
+<ul>
+<li>For example: <em>new Ellipse(diameter, diameter/2, xPosition, yPosition, "black");</em></li>
+</ul>
+</li>
+</ul>
+<h2>Task 2 Solution</h2>
+<p>See Figure 3.</p>
+<pre><code>    /**
+     * Move the cylinder object to a new position described by (x,y)
+     * Recall (x, y) is position of top-left corner of imaginary rectangle bounding 
+     * the top elliptical endof the right circular cylinder
+     * 
+     * @param x the x coordinate of the top-left corner of the top ellipse's bounding rectangle
+     * @param y the y coordinate of the top-left corner of the top ellipse's bounding rectangle
+     */
+    public void moveTo(int x, int y)
+    {
+        top.moveTo(x, y);
+        wall.moveTo(x, y + diameter/4);
+        base.moveTo(x, y          + height);
+
+        //reinitialize the instance variables
+        //to reflect the new position of the cylinder
+        xPosition = x;
+        yPosition = y;
+    }
+</code></pre>
+
+<p><img alt="Figure 2: Right circular cylinder represented by ellipses and rectangle" src="img/Q302.png">
+<img alt="Figure 3: Relative coordinates of cylinder components" src="img/Q303.jpeg"></p>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Question 4 [Marks 12/100]</h1>
+<p>In the Notebook project.</p>
+<ul>
+<li>Create a Notebook object</li>
+<li>Invoke <em>initializeTestData</em><ul>
+<li>The output should correspond to that shown in Figure 1.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: list of Notebook test data" src="img/Q401.png"></p>
+<h2>Task 1</h2>
+<p>Modify the following method in the Notebook class to display the note numbers in addition to the actual note:</p>
+<ul>
+<li><em>listNotesWhile</em> method illustrated in Figure 2.</li>
+</ul>
+<p><img alt="Figure 2: Notebook listNotesWhile method" src="img/Q402.png"></p>
+<h2>Task 1 Solution</h2>
+<p>Here is the completed method <em>initializeTestData</em>:</p>
+<pre><code>    public void initializeTestData()
+    {
+
+        notes = new ArrayList&lt;String&gt;(); 
+        notes.add(&quot;Lab at 9am&quot;);
+        notes.add(&quot;Lecture at 10am&quot;);
+        notes.add(&quot;Break at 11.15am&quot;);
+        notes.add(&quot;Library at 11.30 till lunch&quot;);
+        notes.add(&quot;Lunch at 1pm&quot;);
+    }
+</code></pre>
+
+<p>Here is an alternative implementation:</p>
+<pre><code>    public void initializeTestData2()
+    {  
+        notes = new ArrayList&lt;String&gt;() 
+        {{
+                add(&quot;Lab at 9am&quot;);
+                add(&quot;Lecture at 10am&quot;);
+                add(&quot;Break at 11.15am&quot;);
+                add(&quot;Library at 11.30 till lunch&quot;);
+                add(&quot;Lunch at 1pm&quot;);
+        }};
+    }
+</code></pre>
+
+<p>Here is the <em>listNotesWhile</em> implementation:</p>
+<pre><code>   public void listNotesWhile()
+   {
+        int index = 0;
+        while(index &lt; notes.size())
+        {
+            System.out.println((index+1) + &quot; &quot; + notes.get(index));
+            index += 1;
+        }
+   }
+</code></pre>
+
+<h2>Task 2</h2>
+<p>Modify the following method in the Notebook class to display the note numbers in addition to the actual note:</p>
+<ul>
+<li><em>listNotesForEach</em> method illustrated in Figure 3.<ul>
+<li>Hint: consider use of <em>ArrayList lastIndexOf(Object o)</em>. </li>
+<li>Documentation viewable <a href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html">here</a></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 3: Notebook listNotesForEach method" src="img/Q403.png"></p>
+<h2>Task 2 Solution</h2>
+<pre><code>    public void listNotesForEach()
+    {
+        for(String note: notes)
+        {
+            System.out.println((notes.lastIndexOf(note) +1) + &quot; &quot; + note);
+        }
+    }
+</code></pre>
+
+<h2>Task 3</h2>
+<p>Modify the following method in the Notebook class to display the note numbers in addition to the actual note:</p>
+<ul>
+<li><em>listNotesIterator</em> illustrated in Figure 4.<ul>
+<li>Hint: Create a local variable <em>String note</em> in the body of the <em>while</em> loop and initialize with <em>it.next()</em></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 4: Notebook listNotesIterator" src="img/Q404.png"></p>
+<p>In all cases the numbering should commence at 1 as shown in Figure 5.</p>
+<p><img alt="Figure 5: list of Notebook test data with numbering" src="img/Q405.png"></p>
+<h2>Task 3Solution</h2>
+<pre><code>    public void listNotesIterator()
+    {
+        Iterator&lt;String&gt; it = notes.iterator();
+        while(it.hasNext())
+        {
+            String note = it.next();
+            System.out.println((notes.lastIndexOf(note) +1) + &quot; &quot; + note);
+        }
+    }
+</code></pre>
+
+<p>Alternative (simpler) implementation:</p>
+<pre><code>    public void listNotesIterator2()
+    {
+        int index = 1;
+        Iterator&lt;String&gt; it = notes.iterator();
+        while(it.hasNext())
+        {
+            String note = it.next();
+            System.out.println((index + &quot; &quot; + note);
+            index += 1;
+        }
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Question 5 [Marks 16/100]</h1>
+<h2>Task 1</h2>
+<p>Add a new feature to the Notebook class in the <em>notebook</em> project as follows:</p>
+<ul>
+<li>Create a new class named Assignment in <em>notebook</em> (See Figure 1).</li>
+</ul>
+<p><img alt="Figure 1: Assignment class added to notebook project" src="img/Q501.png"></p>
+<ul>
+<li>Here is the specification for <em>Assignment</em>:<ul>
+<li>Fields:<ul>
+<li><em>int id</em></li>
+<li><em>String subject</em></li>
+<li><em>float result</em></li>
+</ul>
+</li>
+<li>Constructor signature<ul>
+<li><em>public Assignment(int id, String subject, float result)</em></li>
+</ul>
+</li>
+<li>Initialize the fields in the constructor</li>
+</ul>
+</li>
+</ul>
+<h2>Task 1 Solution</h2>
+<p>Here is the implementation as required in Task 1:</p>
+<pre><code>public class Assignment
+{
+    int     id;
+    String  subject;
+    float   result;
+
+    public Assignment(int id, String subject, float result)
+    {
+        this.id         = id;
+        this.subject    = subject;
+        this.result     = result;
+    }
+}
+</code></pre>
+
+<h2>Task 2</h2>
+<p>Add a method to display the state of a particular Assignment object</p>
+<ul>
+<li><em>public void display</em></li>
+<li>See Figure 2.</li>
+</ul>
+<p><img alt="Figure 2: Sample Assignment output" src="img/Q502.png"></p>
+<h2>Task 2 Solution</h2>
+<pre><code>    public void display()
+    {
+        System.out.println(&quot;Assignment id: &quot; + id + &quot;   Subject: &quot; + subject + &quot;   Result: &quot; + result);
+    }
+</code></pre>
+
+<h2>Task 3</h2>
+<p>Create a new field in Notebook</p>
+<ul>
+<li><em>ArrayList&lt;Assignment> assignments;</em></li>
+<li>Initialise <em>assignments</em> in the Notebook constructor.</li>
+</ul>
+<h2>Task 3 Solution</h2>
+<p>Here is the relevant snippet from Notebook:</p>
+<pre><code>public class Notebook
+{
+    private ArrayList&lt;String&gt; notes;
+    private ArrayList&lt;Assignment&gt; assignments;
+
+    public Notebook()
+    {
+        notes = new ArrayList&lt;String&gt;();
+        assignments = new ArrayList&lt;&gt;();
+    }
+    ...
+    ...
+}
+</code></pre>
+
+<h2>Task 4</h2>
+<p>Write a method <em>initializeAssignmentData</em> in Notebook to generate Assignment test data</p>
+<ul>
+<li>Create and add 5 <em>Assignment</em> objects</li>
+<li>Consider using as a model the existing method <em>public void initiailzeTestData</em></li>
+<li>See skeletion of method below.</li>
+</ul>
+<p>Here are two versions of the skeleton of <em>Notebook initializeAssignmentData</em> method. Implement one of the two.</p>
+<p>Version 1:</p>
+<pre><code>    public void initializeAssignmentData()
+    {   
+        Assignment assign1 = new Assignment(1001, &quot;Networking&quot;, 74.3f);
+        ...
+
+        assignments = new ArrayList&lt;Assignment&gt;();
+        assignments.add(assign1);
+        assignments.add(assign2);
+        ...
+
+    }  
+</code></pre>
+
+<p>Version 2:</p>
+<pre><code>    public void initializeAssignmentData()
+    {
+        assignments = new ArrayList&lt;Assignment&gt;() 
+        {{
+            add(new Assignment(1001, &quot;Networking&quot;,     74.3f));
+            ...
+
+        }};
+
+    }  
+</code></pre>
+
+<h2>Task 4 Solution</h2>
+<pre><code>    public void initializeAssignmentData()
+    {
+
+        assignments = new ArrayList&lt;Assignment&gt;();
+
+        assignments.add(new Assignment(1001, &quot;Networking&quot;,     74.3f));
+        assignments.add(new Assignment(1002, &quot;Programming&quot;,    56.4f));
+        assignments.add(new Assignment(1003, &quot;WebDev&quot;,         85.6f));
+        assignments.add(new Assignment(1004, &quot;Security&quot;,       79.8f));
+        assignments.add(new Assignment(1005, &quot;Algorithms&quot;,     68.4f));                                
+    } 
+</code></pre>
+
+<p>Alternative implementation:</p>
+<pre><code>    public void initializeAssignmentData2()
+    {
+
+        assignments = new ArrayList&lt;Assignment&gt;() 
+        {{
+            add(new Assignment(1001, &quot;Networking&quot;,     74.3f));
+            add(new Assignment(1002, &quot;Programming&quot;,    56.4f));
+            add(new Assignment(1003, &quot;WebDev&quot;,         85.6f));
+            add(new Assignment(1004, &quot;Security&quot;,       79.8f));
+            add(new Assignment(1005, &quot;Algorithms&quot;,     68.4f));                                
+        }};
+
+    } 
+</code></pre>
+
+<h2>Task 5</h2>
+<p>Write a method in Notebook named <em>listAssignments</em> to display all the assignment data by invoking the <em>display</em> method in Assignment</p>
+<ul>
+<li>See Figure 3 for typical output.</li>
+</ul>
+<p><img alt="Figure 3: Sample Assignment test data" src="img/Q503.png"></p>
+<h2>Task 5 Solution</h2>
+<p>Method to be added to Notebook to facilitate displaying the state of each assignment:</p>
+<pre><code>    public void listAssignments()
+    {
+        for(Assignment assignment : assignments)
+        {
+           assignment.display();
+        }
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="07" class="ui tab stacked moodle-book segment">
+	     <h1>Question 6 [Marks 13/100]</h1>
+<p>Open the <em>DemoArray</em> class in the <em>arrays</em> project.</p>
+<h2>Task 1</h2>
+<p>In the default constructor:</p>
+<ul>
+<li>Initialize the <em>intArray</em> using the instance variable <em>size</em> to set the capacity of the array. </li>
+<li>Hint: use the <em>new</em> operator.</li>
+</ul>
+<h2>Task Solution 1</h2>
+<p>Note the following the fields in the code extract from the supplied skeleton class DemoArray:</p>
+<pre><code>public class DemoArray
+{
+    private int [] intArray;
+    private int size = 10;
+
+    public DemoArray()
+    {
+
+    }
+    ...
+    ...
+}
+</code></pre>
+
+<p>Here is the required refactored default constructor:</p>
+<pre><code>    public DemoArray()
+    {
+        intArray = new int[size];
+    }
+</code></pre>
+
+<p>As you can see, we have initialized the field <em>int[] intArray</em> using <em>size</em> (which is arbitrarily set to 10) to fix the capacity of the array.</p>
+<h2>Task 2</h2>
+<p>Write a method <em>demoArray</em> in which you:</p>
+<ul>
+<li>Use a <em>for</em> loop to initialize each element in the array with the following value:<ul>
+<li>100 + i</li>
+<li>where <em>i</em> is the index you use in the <em>for</em> loop</li>
+</ul>
+</li>
+<li>Use a second <em>for</em> loop to output the integers.<ul>
+<li>See Figure 1.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 1: An array of integers" src="img/Q601.png"></p>
+<h2>Task Solution 2</h2>
+<pre><code>    public void demoArray()
+    {
+        for(int i = 0; i &lt; size; i += 1)
+        {
+            intArray[i] = 100 + i;
+        }
+
+         for(int i = 0; i &lt; size; i += 1)
+        {
+            System.out.println(&quot;Element at index &quot; + i + &quot; is &quot; + intArray[i]);
+        }       
+    }
+</code></pre>
+
+<h2>Task 3</h2>
+<p>Write a method <em>demoArray2</em> in which you:</p>
+<ul>
+<li>Use a <em>while</em> loop to initialize each element in the array with the following value:<ul>
+<li>200 + 2*i</li>
+<li>where <em>i</em> is the index you use in the <em>while</em> loop</li>
+</ul>
+</li>
+<li>Use a second <em>while</em> loop to output the integers.<ul>
+<li>See Figure 2.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 2: An array of integers" src="img/Q602.png"></p>
+<h2>Task Solution 3</h2>
+<pre><code>    public void demoArray2()
+    {
+
+        int i = 0;
+        while(i &lt; size)
+        {
+            intArray[i] = 200 + 2*i;
+            i += 1;
+        }
+
+        i = 0;
+        while(i &lt; size)
+        {
+            System.out.println(&quot;Element at index &quot; + i + &quot; is &quot; + intArray[i]);
+            i += 1;
+        }       
+    }
+</code></pre>
+
+<h2>Task 4</h2>
+<p>Write a method <em>demoArray3</em> in which you:</p>
+<ul>
+<li>Use a <em>do while</em> loop to initialize each element in the array with the following value:<ul>
+<li>300 + 3*i</li>
+<li>where <em>i</em> is the index you use in the <em>do-while</em> loop</li>
+</ul>
+</li>
+<li>Use a second <em>do while</em> loop to output the integers.<ul>
+<li>See Figure 3.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 3: An array of integers" src="img/Q603.png"></p>
+<h2>Task Solution 4</h2>
+<pre><code>    public void demoArray3()
+    {
+
+        int i = 0;
+        do
+        {
+            intArray[i] = 300 + 3*i;
+            i += 1;
+        }while(i &lt; size);
+
+        i = 0;
+        do
+        {
+            System.out.println(&quot;Element at index &quot; + i + &quot; is &quot; + intArray[i]);
+            i += 1;
+        } while(i &lt; size);     
+    }
+</code></pre>
+
+<h2>Task 5</h2>
+<p>Write a method <em>demoArray4</em> in which you:</p>
+<ul>
+<li>Declare an ArrayList of Integer</li>
+<li>Add <em>size</em> number of int values generated as follows<ul>
+<li>in a for loop</li>
+<li>each element is 400 + 4*i where <strong>i</strong> is the loop counter</li>
+</ul>
+</li>
+<li>Print out all the elements in the list in rows so that the display matches Figure 4.<ul>
+<li>Use an iterator to traverse the loop as you print each element.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figur 4: An ArrayList of Integer" src="img/Q604.png"></p>
+<h2>Task Solution 5</h2>
+<pre><code>    public void demoArray4()
+    {
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        for(int i = 0; i &lt; size; i +=1)
+        {
+            list.add(400 + 4*i);
+        }
+
+        Iterator&lt;Integer&gt; it = list.iterator();
+        int index = 0;
+        while(it.hasNext())
+        {
+            System.out.println(&quot;Element at index &quot; + index + &quot; is &quot; + it.next());
+            index += 1;
+        }     
+    }
+</code></pre>
+
+<p>Alternative implementation:</p>
+<pre><code>    public void demoArray4_b()
+    {
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        for(int i = 0; i &lt; size; i +=1)
+        {
+            list.add(400 + 4*i);
+        }
+
+        Iterator&lt;Integer&gt; it = list.iterator();
+        while(it.hasNext())
+        {
+            Integer integer = it.next();
+            int index = list.lastIndexOf(integer);
+            System.out.println(&quot;Element at index &quot; + index + &quot; is &quot; + integer);
+        }
+
+    }
+</code></pre>
+	  </section>
+	  <section data-tab="08" class="ui tab stacked moodle-book segment">
+	     <h1>Question 7 [Marks 13/100]</h1>
+<p>Open <em>ICTStrings</em> class source file located in the <em>strings</em> project.</p>
+<ul>
+<li>Complete the class by adding the following methods, the skeletons of which are already in place:</li>
+</ul>
+<h2>Task 1</h2>
+<p><em>isEqual</em>:</p>
+<ul>
+<li>signature <em>public static boolean isEqual(String s1, String s2)</em>.</li>
+<li>return <em>true</em> if the strings are equal</li>
+<li>else <em>false</em>.</li>
+</ul>
+<h2>Task 1 Solution:</h2>
+<pre><code>    /**
+     * Check is s1 is equal to s2
+     * @param s1 a string
+     * @param s2 another string
+     * @return true if strings equal else false
+     */
+    public static boolean isEqual(String s1, String s2)
+    {
+        return s1.equals(s2);
+    }
+</code></pre>
+
+<h2>Task 2</h2>
+<p><em>isEqualIgnoreCase</em>:</p>
+<ul>
+<li>signature <em>public static boolean isEqualIgnoreCase(String s1, String s2)</em>.</li>
+<li>return <em>true</em> if the strings are equal, ignoring case</li>
+<li>else return <em>false</em>.</li>
+</ul>
+<h2>Task 2 Solution:</h2>
+<pre><code>    /**
+     * Check if s1 is equal to s2 ignoring case
+     * @param s1 a string
+     * @param s2 another string
+     * @return true if strings equal, ignoring case, else false
+     */
+    public static boolean isEqualIgnoreCase(String s1, String s2)
+    {
+        return s1.equalsIgnoreCase(s2);
+    }
+</code></pre>
+
+<h2>Task 3</h2>
+<p><em>hasPrefix</em></p>
+<ul>
+<li>signature <em>public static boolean hasPrefix(String s1, String prefix)</em></li>
+<li>return <em>true</em> if <em>s1</em> begins with <em>prefix</em></li>
+<li>else return false</li>
+</ul>
+<h2>Task 3 Solution:</h2>
+<pre><code>    /**
+     * Check if s1 starts with the string prefix
+     * @param a string
+     * @param another string representing prefix
+     * @return true if string s1 commences with prefix else false
+     */
+    public static boolean hasPrefix(String s1, String prefix)
+    {
+        return s1.startsWith(prefix);
+    }
+</code></pre>
+
+<h2>Task 4</h2>
+<p><em>length</em></p>
+<ul>
+<li>signature <em>public static int length(String s1, String s2)</em></li>
+<li>concatenate the strings <em>s1</em> and <em>s2</em>.</li>
+<li>evaluate the length of the concatenated string</li>
+<li>return the evaluated length</li>
+</ul>
+<h2>Task 4 Solution:</h2>
+<pre><code>    /**
+     * Length string comprising concatenated strings s1 and s2
+     * @param s1 a string
+     * @param s2 another string
+     * @return length of s1 concatenated with s2
+     */
+    public static int length(String s1, String s2)
+    {
+        return (s1 + s2).length();
+    }
+</code></pre>
+
+<h2>Task 5</h2>
+<p><em>toUpper</em></p>
+<ul>
+<li>signature <em>public static String toUpper(String s1)</em></li>
+<li>return a string whose characters match those in <em>s1</em> but are all upper case</li>
+</ul>
+<h2>Task 5 Solution:</h2>
+<pre><code>    /**
+     * Create string the uppercase version of s1
+     * @param s1 a string
+     * @return copy of s1 all in upper case
+     */
+    public static String toUpper(String s1)
+    {
+        return s1.toUpperCase();
+    }
+</code></pre>
+
+<h2>Task 6</h2>
+<p><em>subString</em></p>
+<ul>
+<li>signature <em>public static subString(String s1, int beginIndex, int endIndex)</em></li>
+<li>return string a subset of <em>s1</em> beginning at <em>beginIndex</em> and whose final index is <em>endIndex -1</em>.</li>
+</ul>
+<h2>Task 6 Solution:</h2>
+<pre><code>    /**
+     * Create substring of s1 from indexStart to indexEnd excluding indexEnd
+     * That is: range is [indexStart, indexEnd)
+     * Example String &quot;Hello ICTSkills&quot;
+     * indexStart = 2;
+     * indexEnd = 8;
+     * substring is &quot;llo IC&quot;
+     * @param s1 a string
+     * @param indexStart of s1 becomes zeroth index of substring
+     * @param indexEnd of s1 determines end of substring
+     * @return the substring
+     */
+    public static String subString(String s1, int indexStart, int indexEnd)
+    {
+        return s1.substring(indexStart, indexEnd);
+    }
+</code></pre>
+
+<h2>Task 7</h2>
+<p><em>reverse</em></p>
+<ul>
+<li>signature <em>public static String reverse(String s1)</em></li>
+<li>return a string that is equal to <em>s1</em> reversed.<ul>
+<li>Hint: use <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/StringBuilder.html">StringBuilder</a><ul>
+<li>consider searching <a href="http://stackoverflow.com">stackoverflow</a> for various options.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2></h2>
+<p>A test class TestICTStrings that includes test data is provided to facilitate testing of the methods above (See Figure 1).</p>
+<ul>
+<li>You can test the methods individually or</li>
+<li>Collectively by invoking <em>testAll</em>.</li>
+</ul>
+<p>The expected test results are shown in Figure 2.</p>
+<h2>Task 7 Solution:</h2>
+<pre><code>    /**
+     * Create a string, the reverse of string
+     * @param the string to be reversed
+     * @return a copy of string reversed
+     */
+    public static String reverse(String string)
+    {
+        int length = string.length();
+        char[] characters = new char[length];
+        for(int i = 0; i &lt; length; i += 1)
+        {
+            characters[i] = string.charAt(length - 1 - i);
+        }
+        return new String(characters);
+    }
+</code></pre>
+
+<p>An alternative implementation:</p>
+<pre><code>    /**
+     * Create a string, the reverse of string
+     * @param the string to be reversed
+     * @return a copy of string reversed
+     */
+    public static String reverse2(String string)
+    {
+        StringBuilder sb = new StringBuilder(string);
+        return sb.reverse().toString();
+    }
+</code></pre>
+
+<p>Or, using chaining:</p>
+<pre><code>    /**
+     * Create a string, the reverse of string
+     * @param the string to be reversed
+     * @return a copy of string reversed
+     */
+    public static String reverse3(String string)
+    {
+        return new StringBuilder(string).reverse().toString();
+    }
+</code></pre>
+
+<p><img alt="Figure 1: Test string methods" src="img/Q701.png"></p>
+<p><img alt="Figure 2: Expected test results" src="img/Q702.png"></p>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>

@@ -1,0 +1,812 @@
+ <!DOCTYPE html>
+ <html>
+   <head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+   
+     <title> Lab-10-B </title>
+   
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+     <link rel="stylesheet" href="./style/semantic/css/semantic.min.css" type="text/css">  
+     <link rel="stylesheet" href="./style/custom/main.css" type="text/css"> 
+   
+     <script src="./style/custom/jquery-2.1.0.min.js"></script> 
+     <script src="./style/custom/jquery.address-1.6.min.js"></script>
+     <script src="./style/semantic/javascript/semantic.min.js"></script>
+   
+     <link rel="stylesheet" href="./style/highlight/school_book.css">
+     <script src="./style/highlight/highlight.pack.js"></script> 
+     <script>hljs.initHighlightingOnLoad();</script>
+   
+     <script src="./style/custom/common.js"> </script> 
+     <script src="./style/custom/main.js"> </script> 
+  </head>
+  <body>
+  <nav class="ui fixed top pointing borderless inverted menu">
+    <header class="header item"> <a href="../index.html">Assignments</a></header>
+    <div class="right tab-menu menu">
+          <a class="item" data-tab="Lab-10-B"> Lab-10-B </a>
+          <a class="item" data-tab="01"> 01 </a>
+          <a class="item" data-tab="02"> 02 </a>
+          <a class="item" data-tab="03"> 03 </a>
+          <a class="item" data-tab="04"> 04 </a>
+          <a class="item" data-tab="05"> 05 </a>
+          <a class="item" data-tab="06"> 06 </a>
+    </div>
+  </nav>
+
+  <br>
+
+	  <section data-tab="Lab-10-B" class="ui tab stacked moodle-book segment">
+	     <h1>Readme</h1>
+<p>Assignment 2: This assignment is based on materials contained in the following labs and presentations:</p>
+<ul>
+<li>Labs<ul>
+<li>Objects and Classes</li>
+<li>Class analysis and Refactor</li>
+<li>Object Interaction</li>
+<li>Grouping Objects</li>
+<li>More sophisticated behaviour</li>
+<li>BlueJ Debug and Unit Test</li>
+<li>Designing Classes (Spacebook)</li>
+</ul>
+</li>
+<li>Presentations<ul>
+<li>lectures 1 to 10</li>
+<li>characters</li>
+</ul>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="01" class="ui tab stacked moodle-book segment">
+	     <h1>Guidelines</h1>
+<ul>
+<li>
+<p>Submission material:</p>
+<ul>
+<li>Complete the assignment by modifying the classes in the folder <em>assignments-2</em> as requested in the questions.<ul>
+<li>This folder will have been generated when you expanded the file <em>assignment-2.zip</em> that you downloaded.</li>
+</ul>
+</li>
+<li>When you are ready to submit, compress the folder <em>assignments-2</em>.<ul>
+<li>Before you compress the folder ensure that the downloaded zip file is not present in your <em>assignments</em> folder otherwise naming confusion may occur.</li>
+</ul>
+</li>
+<li>Upload your completed source code in the single file <em>assignment-2.zip</em><ul>
+<li>Do not change the name of the file (such as by adding your student number and so on)</li>
+<li>Each file is automatically located in individual student directories so that files having similar names will not overwrite each other.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>All source code that your write, including individual methods and constructors, is to be documented using as a model the Cone class provided in the project <em>shapes</em>.</p>
+<ul>
+<li>Marks will be awarded for documentation and presentation.</li>
+<li>Document only the source code that you write. <ul>
+<li>Do not document legacy code unless specifically requested.</li>
+</ul>
+</li>
+<li>Avoid naive comments.<ul>
+<li>Example: //here we are allocating memory to the variable <em>house</em> (bad)_</li>
+</ul>
+</li>
+<li>Use the minimum number of comments necessary.</li>
+<li>It is not necessary to comment all fields and methods that you write.<ul>
+<li>Where possible let the choice of variable and method name serve as documentation.</li>
+<li>Unlike in assignment 1, you are asked to comment any getters or setters that you may write.</li>
+</ul>
+</li>
+<li>Do not mix inline and block commenting styles</li>
+<li>Use the JavaDoc commenting style where appropriate:</li>
+</ul>
+</li>
+</ul>
+<pre><code>/**
+ *
+ */
+</code></pre>
+
+<ul>
+<li>Further information on code styling is in <em>JavaCodeConventions</em> available in the <em>Slides</em> section of this assignment.</li>
+<li>The coding convention you use should match is that in the Cone class.<ul>
+<li>Indent 4 spaces.</li>
+<li>Use self-documenting variable and method names.<ul>
+<li>Not as terse as:<ul>
+<li>Example: <em>String a</em></li>
+</ul>
+</li>
+<li>But not too long<ul>
+<li>Example: <em>String theBankManagersTemporaryAssistant</em> (definitely too long).</li>
+</ul>
+</li>
+<li>How about:<ul>
+<li>Example: <em>String managerAssistant</em></li>
+</ul>
+</li>
+<li>It is acceptable to use single character variable names for loop counters.</li>
+</ul>
+</li>
+<li>Use blank lines sparingly.</li>
+</ul>
+</li>
+</ul>
+	  </section>
+	  <section data-tab="02" class="ui tab stacked moodle-book segment">
+	     <h1>Setup</h1>
+<p>Download the archive <em>assignment-2.zip</em> available <a href="archives/assignment-2.zip">here</a> and expand to a directory <em>workspaceBlueJ/assignments/assignment-2</em>.</p>
+<p>Your directory structure should be as depicted in Figure 1.</p>
+<p><img alt="Figure 1: directory structure" src="img/readme01.png"></p>
+<p>The folder <em>assignments-2</em> should contain the projects shown in Figure 2.</p>
+<p><img alt="Figure 2: projects in assignments-2 folder" src="img/readme02.png"></p>
+<p>The projects contain skeleton code which forms the basis of the questions that follow.</p>
+	  </section>
+	  <section data-tab="03" class="ui tab stacked moodle-book segment">
+	     <h1>Q1 diary-prototype [17/100]</h1>
+<p><strong><em>Task 1</em></strong></p>
+<p>In <strong>diary-prototype</strong> project create a class named <strong>Calendar</strong> containing the following method:</p>
+<ul>
+<li><em>public static String dayName(int dayNumber)</em></li>
+</ul>
+<p>Use the <em>switch</em> statement.</p>
+<ul>
+<li>Note: Although it is possible to implement this method using <em>if-else</em>, it is essential to use <em>switch</em>.<ul>
+<li>Zero marks will be given for alternative implementations.</li>
+</ul>
+</li>
+</ul>
+<p>Specification <em>dayName</em>:</p>
+<ul>
+<li>Parameter <em>dayNumber</em> in range [0, 6]<ul>
+<li>0 represents Sunday, 1 represents Monday and so on.</li>
+</ul>
+</li>
+<li>Returns the name of the day corresponding to the parameter<ul>
+<li>For example invoking <em>dayNumber(2)</em> returns Tuesday.</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 2</em></strong></p>
+<p>Add a further method to Calendar:</p>
+<ul>
+<li><em>public static String monthName(int monthNumber)</em></li>
+</ul>
+<p>Use the <em>switch</em> statement .</p>
+<ul>
+<li>Note: Although it is possible to implement this method using <em>if-else</em>, it is essential to use <em>switch</em>.<ul>
+<li>Zero marks will be given for alternative implementations.</li>
+</ul>
+</li>
+</ul>
+<p>Specification <em>monthName</em></p>
+<ul>
+<li>Parameter <em>monthName</em> in range [0, 11]<ul>
+<li>0 represents January, 1 represents February and so on.</li>
+</ul>
+</li>
+<li>Returns the name of the month corresponding to the parameter<ul>
+<li>For example invoking <em>monthName(6)</em> returns July </li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 3</em></strong></p>
+<p><strong>DiaryTester</strong>: Write the positive regression test <em>checkDailyCapacity</em>:</p>
+<ul>
+<li>
+<p>Its purpose is to attempt to add a 1-hour appointment to every available slot during a specific day.</p>
+<ul>
+<li>If the attempt succeeds, the method returns <em>true</em>, else <em>false</em>.</li>
+</ul>
+</li>
+<li>
+<p>The signature is <em>public boolean checkDailyCapacity(int dayNmr)</em></p>
+</li>
+<li>Here is the method specification<ul>
+<li>the argument range is [0, 4] representing the four workdays, Monday to Friday</li>
+<li>create an array of 1-hour appointments, one for each working hour in the day</li>
+<li>recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+<li>make the argument <em>description</em><ul>
+<li><em>"Day " + dayNmr + " : Appointment number" + j</em> </li>
+<li>where j is the hour number and is in the range [0, Day.MAX_APPOINTMENTS_PER_DAY)</li>
+<li>a typical description would, therefore, be <ul>
+<li><em>Day 0 : Appointment number 4</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Incorporate method into DiaryTester in the <em>positiveTests</em> method<ul>
+<li>Insert method in a loop to be invoked for all 5 working days</li>
+</ul>
+</li>
+<li>Run all regression tests using <em>DiaryTesterTest.Test All</em>.</li>
+</ul>
+<p><strong>Skeleton code: <em>DiaryTester</em> </strong></p>
+<pre><code>
+    public boolean checkDailyCapacity(int dayNmr)
+    {
+        Day day = ...;
+        int nmrHrsAppointment = 1;
+        Appointment[] appointment = ...;
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            appointment[j] = ...;
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            isAppointmentAdded = ...;
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p><strong>Skeleton code <em>DiaryTesterTest</em> </strong></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+        //test for each workday, Monday to Friday inclusive
+        //Do not use magic numbers
+        for(int dayNmr = 0; dayNmr &lt; ...; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity(dayNmr));
+        }
+    }
+</code></pre>
+
+<p><strong><em>Task 4</em></strong></p>
+<p>Copy the method <em>checkDailyCapacity</em>, save as <em>checkDailyCapacity2</em> and refactor so that</p>
+<ul>
+<li>[1] A typical actual parameter <em>description</em> in <em>Appointment</em> constructor resolves to:<ul>
+<li><em>Day Monday</em> <ul>
+<li>rather than</li>
+</ul>
+</li>
+<li><em>Day 0</em></li>
+<li>Hint: Use the newly developed Calendar class.</li>
+<li>Hint: Recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+</ul>
+</li>
+<li>[2] Print for each appointment using the following format:<ul>
+<li>Day Friday : Appointment number 1 Appointment duration 1</li>
+</ul>
+</li>
+<li>See <em>Figure 1 Invoking checkDailyCapacity2</em></li>
+</ul>
+<p><img alt="Figure 1: Invoking checkDailyCapacity2" src="img/01.png"></p>
+<p><strong><em>Task 5</em></strong></p>
+<p><em>DiaryTester</em> : Write the positive regression test <em>checkDailyCapacity3</em>:</p>
+<p>This task remembles Tasks 3 &amp; 4 except that </p>
+<ul>
+<li>instead of using an array of <em>Appointment</em> objects you are required to use an <em>ArrayList</em> of objects<ul>
+<li>Note: use a <em>for</em> loop, as before, to populate the ArrayList of appointments</li>
+<li>As you populate the ArrayList, print out the details of each appointment as depicted in Figure 2.</li>
+</ul>
+</li>
+<li>
+<p>instead of using a <em>for</em> loop to make the appointments you are required to use an iterator.</p>
+</li>
+<li>
+<p>Its purpose is to attempt to add a 1-hour appointment to every available slot during a specific day.</p>
+<ul>
+<li>If the attempt succeeds, the method returns <em>true</em>, else <em>false</em>.</li>
+</ul>
+</li>
+<li>
+<p>The signature is <em>public boolean checkDailyCapacity3(int dayNmr)</em></p>
+</li>
+<li>Here is the method specification<ul>
+<li>the argument range is [0, 4] representing the four workdays, Monday to Friday</li>
+<li>create an <em>ArrayList</em> of 1-hour appointments, one for each working hour in the day</li>
+<li>recall the signature of <em>Appointment</em> is <em>Appointment(String description, int duration)</em></li>
+<li>make the argument <em>description</em><ul>
+<li><em>"Day "+ dayNmr + " : Appointment number" + j</em> </li>
+<li>where j is the hour number and is in the range [0, Day.MAX_APPOINTMENTS_PER_DAY)</li>
+<li>a typical description would, therefore, be <ul>
+<li><em>Day 1 : Appointment number 4 Appointment duration 1</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Incorporate method into DiaryTester in the <em>positiveTests</em> method<ul>
+<li>Insert method in a loop to be invoked for all 5 working days</li>
+</ul>
+</li>
+<li>Run all regression tests using <em>DiaryTesterTest Test All</em>.</li>
+</ul>
+<p>Skeleton code: <em>DiaryTester</em></p>
+<pre><code>    public boolean checkDailyCapacity3(int dayNmr)
+    {
+        Day day = ...;
+        int nmrHrsAppointment = 1;
+        ArrayList&lt;Appointment&gt; appointment = ...;
+        //Create 1-hour appointments for day
+        for(int j = 0; j &lt; Day.MAX_APPOINTMENTS_PER_DAY; j += 1)
+        {
+            //populate the list appointments
+            ...
+
+            //print out the day number appointment number and appointment duration matching the layout in Figure 2
+            ...
+
+        }
+
+        boolean isAppointmentAdded = true;
+        //add all appointments
+
+        Iterator&lt;...&gt; it = ... ;
+        int hour = ...;
+        while(it.hasNext())
+        {
+            isAppointmentAdded = ...;
+        }
+        return isAppointmentAdded;
+    }
+</code></pre>
+
+<p>Skeleton code <em>DiaryTesterTest</em></p>
+<pre><code>    @Test
+    public void positiveTests()
+    {
+        ...
+        //test for each workday, Monday to Friday inclusive
+        //Do not use magic numbers       
+        for(int dayNmr = 0; dayNmr &lt; ...; dayNmr += 1)
+        {
+            assertEquals(true, diaryTester.checkDailyCapacity3(dayNmr));
+        }
+    }
+</code></pre>
+
+<p><img alt="Figure 2: Task 6 - checkDailyCapacity3" src="img/02.png"></p>
+	  </section>
+	  <section data-tab="04" class="ui tab stacked moodle-book segment">
+	     <h1>Q2 BIABank [17/100]</h1>
+<p><strong><em>Task 1</em></strong></p>
+<p>Create a class in <strong>BIABank</strong> project named <strong>FinanceUtilities</strong>.</p>
+<ul>
+<li>Write a method in this class named <em>isValidAscending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 1:
+<img alt="Figure 1: Specification and signature method isValidAscending" src="img/04.png"></li>
+<li>Here are examples:<ul>
+<li>Valid PIN: 12234<ul>
+<li>Valid because although numbers ascending they are not consecutive</li>
+</ul>
+</li>
+<li>Invalid PIN: 12345<ul>
+<li>Invalid because numbers are consecutive</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 2</em></strong></p>
+<ul>
+<li>Write a method in <em>FinanceUtilities</em> named <em>isValidDescending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 2:
+<img alt="Figure 2: Specification and signature method isValidDescending" src="img/05.png"></li>
+<li>Here are examles:<ul>
+<li>Valid PIN: 654432<ul>
+<li>Valid because although numbers descending they are not consecutive</li>
+</ul>
+</li>
+<li>Invalid PIN: 654321<ul>
+<li>Invalid because numbers are consecutive</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 3</em></strong></p>
+<ul>
+<li>Write a method in <em>FinanceUtilities</em> named <em>isValidAscendingDescending</em> to check the validity of a PIN (Personal Identification Number)</li>
+<li>The specification and signature follows in Figure 2:
+<img alt="Figure 3: Specification and signature method isValidAscendingDescending" src="img/06.png"></li>
+<li>Same principles apply as in Task 2 and Task 3<ul>
+<li>If numbers are not consecutive then PIN valid</li>
+<li>If numbers consecutive ascending or descending the PIN is invalid</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 4</em></strong></p>
+<p>Create a JUnit test class <strong>FinanceUtilitiesTest</strong>.
+Using the BlueJ recorder or otherwise write a positive test method complying with the following specification:</p>
+<ul>
+<li>Signature: </li>
+</ul>
+<pre><code>@Test 
+public void testPinsTrue()
+</code></pre>
+
+<ul>
+<li>Write 4 tests in this method <em>testPinsTrue that invoke:</em><ul>
+<li><em>isValidAscending</em> with argument "12234"</li>
+<li><em>isValidDescending</em> with argument "43221"</li>
+<li><em>isValidAscendingDescending</em> with argument "12234"</li>
+<li><em>isValidAscendingDescending</em> with argument "43221"</li>
+</ul>
+</li>
+</ul>
+<p>Invoke <em>FinanceUtilitiesTest.Test All</em>:</p>
+<ul>
+<li>all tests should succeed.</li>
+</ul>
+<p><strong><em>Task 5</em></strong></p>
+<p>In <em>FinanceUtilitiesTest</em>, using the BlueJ recorder or otherwise write a negative test method complying with the following specification:</p>
+<ul>
+<li>Signature: </li>
+</ul>
+<pre><code>@Test 
+public void testPinsFalse()
+</code></pre>
+
+<ul>
+<li>Write 4 tests in this method <em>testPinsFalse that invoke:</em><ul>
+<li><em>isValidAscending</em> with argument "1234"</li>
+<li><em>isValidDescending</em> with argument "4321"</li>
+<li><em>isValidAscendingDescending</em> with argument "1234"</li>
+<li><em>isValidAscendingDescending</em> with argument "4321"</li>
+</ul>
+</li>
+</ul>
+<p>Invoke <em>FinanceUtilitiesTest.Test All</em> </p>
+<ul>
+<li>all tests should succeed.</li>
+</ul>
+	  </section>
+	  <section data-tab="05" class="ui tab stacked moodle-book segment">
+	     <h1>Q3 char-string [30/100]</h1>
+<p>Write a series of methods described in the tasks below in the class <strong>CharString</strong>, a skeleton for which is provided:</p>
+<p><strong><em>Task 1</em></strong></p>
+<ul>
+<li>Write a method to determine if a character is lower case.</li>
+<li>Signature of method should be:<ul>
+<li><em>public static boolean isLowerCase(char ch)</em></li>
+</ul>
+</li>
+<li>Method returns <em>true</em> if character is lower case else it returns <em>false</em></li>
+</ul>
+<p><strong><em>Task 2</em></strong></p>
+<ul>
+<li>Write a method to determine if a character is upper case.</li>
+<li>Signature of method is:<ul>
+<li><em>public static boolean isUpperCase(char ch)</em></li>
+</ul>
+</li>
+<li>Method returns <em>true</em> if character is upper case else it returns <em>false</em></li>
+</ul>
+<p><strong><em>Task 3</em></strong></p>
+<ul>
+<li>Write a method to convert a character to upper case.</li>
+<li>Signature of method is:<ul>
+<li><em>public static void toUpper(char ch)</em></li>
+</ul>
+</li>
+<li>Assume that <em>char ch</em> is a letter (a - z, A - Z)</li>
+</ul>
+<p><strong><em>Task 4</em></strong></p>
+<ul>
+<li>Write a method to count the number of words in a String object.</li>
+<li>Signature of method is:<ul>
+<li><em>public static int wordCount(String string)</em></li>
+<li>Method returns the number of words </li>
+<li>Hint: consider using <em>Character.isWhitespace(char ch)</em><ul>
+<li>See documentation <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Character.html">here</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 5</em></strong></p>
+<ul>
+<li>Write a method to count the number of occurrences of a specified character <em>char ch</em> in a String object.</li>
+<li>The signature of the method is:<ul>
+<li><em>public static int characterCount(String string, char ch)</em></li>
+</ul>
+</li>
+<li>Method returns the number of characters discovered</li>
+</ul>
+<p><strong><em>Task 6</em></strong></p>
+<ul>
+<li>Write a method to determine if a specified String object is a palindrome</li>
+<li>A palindrome is a string that reads the same backwards as forwards<ul>
+<li>Acceptable example: Able was I ere I saw Elba</li>
+<li>Note: ignore case</li>
+</ul>
+</li>
+<li>The signature of the method is:
+    -<em> public static boolean isPalindrome(String string)</em></li>
+</ul>
+<p>Invoke the method <em>main</em>: the output as shown in Figure 1 should be generated for correctly working methods.
+<img alt="Figure 1: Testing methods in class CharString" src="img/07.png"></p>
+<p><strong><em>Task 7</em></strong></p>
+<p>Write a method in the <strong><em>Sort</em></strong> class located in the <strong><em>sort</em></strong> project to sort an array of Java String objects. </p>
+<ul>
+<li>The method should be similar to that already encountered in the labs called <em>quadraticSort</em> and included in class <em>Sort</em> in the project <em>sort</em>.<ul>
+<li>quadraticSort(int[]) is provided in the project <strong><em>sort</em></strong>, included with this assignment.</li>
+</ul>
+</li>
+<li>The signature of the method to be written is<ul>
+<li><em>public static void quadraticSort(String[] s)</em></li>
+</ul>
+</li>
+<li>You are required to write a helper class to swap or exchange two elements within the String array<ul>
+<li>Signature: <em>swap(String[] s, int to, int from)</em></li>
+</ul>
+</li>
+<li>A test class TestSort is provided below:.<ul>
+<li>Use it to check the output from your code.</li>
+</ul>
+</li>
+</ul>
+<pre><code>public class TestSort
+{
+    public static void stringSort()
+    {
+        //Test string sort
+        String[] s = {&quot;ggg&quot;, &quot;ddd&quot;, &quot;eeeff&quot;, &quot;aaa&quot;, &quot;bbb&quot;, &quot;xxx&quot;, &quot;zzz&quot;, &quot;ccc&quot;, &quot;xabcdef&quot;, &quot;iiiiiii&quot;};
+        System.out.print(&quot;\nBefore sorting: &quot;);
+        for(String str : s)
+        {
+            System.out.print(str + &quot; &quot;);
+        }
+
+        Sort.quadraticSort(s);
+
+        System.out.print(&quot;\n After sorting: &quot;);
+        for(String str : s)
+        {
+            System.out.print(str + &quot; &quot;);
+        }
+    }
+}
+</code></pre>
+	  </section>
+	  <section data-tab="06" class="ui tab stacked moodle-book segment">
+	     <h1>Q4 spacebook [36/100]</h1>
+<p>The following tasks relate to classes in the <em>spacebook</em> project provided.</p>
+<p><strong><em>Task 1 User Message</em></strong></p>
+<p>Write a method in User to send a message.</p>
+<ul>
+<li>Signature: <em>public void sendMessage(Message message)</em><ul>
+<li>Add the message to the outbox of the sender and inbox of target.</li>
+<li>Hint: Information on the sender and target is contained in the message.</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>Task 2: User Friendship</em></strong></p>
+<p>Presently the <em>befriend</em> method in User ensures a user cannot befriend itself.</p>
+<ul>
+<li>Modify the <em>befriend</em> method to ensure that the same user cannot be befriended twice.</li>
+</ul>
+<p>Here is the skeleton code:</p>
+<pre><code>    public void befriend(User friend)
+    {
+        if(friend == this)
+        {
+            System.out.println(&quot;Opps! You seem to have made a mistake in attempting to befriend yourself&quot;);
+        }
+        else if(friendshipsContains(friend))
+        {
+            System.out.println(friend.firstName +&quot; is already a friend&quot;);
+        }
+        else
+        {
+            Friendship friendship = new Friendship(this, friend);
+            friendships.add(friendship);
+        }
+    }
+</code></pre>
+
+<p>As you can see from the above skeleton code, you are required to write the method <em>boolean friendshipsContains(User friend)</em></p>
+<ul>
+<li>The method should check the instance variable <em>friendships</em> and return <em>true</em> if the argument <em>friend</em> is present in the list (as a <em>targetUser</em>), else <em>false</em>.</li>
+</ul>
+<p><strong><em>Task 3: Group</em></strong></p>
+<p>Develop a class named <strong><em>Group</em></strong> to implement the concept of a group of friends such as family, friends, clients and so on.</p>
+<ul>
+<li>Its fields are <ul>
+<li><em>String groupName</em> <ul>
+<li>to represent the name of the group, example <em>clients</em></li>
+</ul>
+</li>
+<li><em>ArrayList&lt;User> members;</em> <ul>
+<li>to contain a list of users, members of this group</li>
+</ul>
+</li>
+<li>A constructor<ul>
+<li><em>public Group(String groupName)</em></li>
+</ul>
+</li>
+<li>A method to add a new member to the group<ul>
+<li><em>public void addGroupMember(User user)</em></li>
+</ul>
+</li>
+<li>A method to broadcast a message to the entire group<ul>
+<li><em>public void broadcastMessage(Message message)</em></li>
+</ul>
+</li>
+<li>A private helper method to print the group list as a column of data<ul>
+<li><em>private String groupList()</em></li>
+</ul>
+</li>
+<li>Override the <em>toString</em> method<ul>
+<li><em>public String toString()</em></li>
+</ul>
+</li>
+<li>Test your code by invoking <em>TestSpacebook addGroups</em><ul>
+<li>Figure 1 shows typical output</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here is the skeleton code:</p>
+<pre><code>import ...
+
+public class Group
+{
+    String groupName;
+
+    ArrayList&lt;User&gt; members;
+
+    public Group(String groupName)
+    {
+        ...
+    }
+
+    public void addGroupMember(User user)
+    {
+        ...
+
+    }
+    /**
+     * Send a message to the inbox of each group member
+     */
+    public void broadcastMessage(Message message)
+    {
+        ...
+        ...
+        ...
+    }
+
+    /*
+     * @return all the group names in a single string
+     * Use the \n between each name to ensure printed on separate lines
+     */
+    private String groupList()
+    {
+        String names = &quot;&quot;;
+        ....
+        return names;
+    }
+    @Override
+    public String toString() {
+        return &quot;GroupName=&quot; + groupName + &quot;\n&quot; + groupList();
+    }   
+}
+</code></pre>
+
+<p><img alt="Figure 1: Invoking addGroups" src="img/10.png"></p>
+<p><strong><em>Task 4: User Status</em></strong></p>
+<p>In the <strong>User</strong> class:</p>
+<ul>
+<li>Use an <em>enum</em> to define status:<ul>
+<li>enum Status {ONLINE, OFFLINE, BUSY, AWAY}</li>
+</ul>
+</li>
+<li>Create a <em>Status</em> field</li>
+<li>Set the default status field to "ONLINE" at User instantiation</li>
+<li>Write a method to set the status field's value<ul>
+<li>Signature: <em>public void setStatus(...)</em></li>
+</ul>
+</li>
+<li>Write a method to display a list of friends filtered based on status<ul>
+<li>Signature: <em>public void displayFriends(Status status)</em></li>
+<li>Test by invoking <em>displayFriends(Status status)</em> on a <em>User</em> object with various Status values</li>
+<li>Test by invoking <em>displayFriends()</em> on a <em>TestSpacebook</em> object</li>
+<li>See Figure 2 for sample output</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Figure 2: Sample output displayFriends" src="img/11.png"></p>
+<p><strong><em>Task 5: Message</em></strong></p>
+<p>Add a subject field to the <strong>Message</strong> class</p>
+<ul>
+<li>Define enum Subject {PERSONAL, FAMILY, WORK, GENERAL}</li>
+<li><em>Subject subject</em></li>
+<li>Modify <em>Message</em> constructor to include a <em>Subject</em> parameter </li>
+<li>Complete the <em>displayMessage</em> method in <em>Message</em> to print output formatted as shown in Figure 3.</li>
+<li>Test by invoking <em>displayMessages</em> on <em>TestSpacebook</em></li>
+</ul>
+<pre><code>//Skeleton code
+
+...
+
+public class Message
+{
+    Subject   ...;
+    String    messageText;
+    User      from;
+    User      to;
+
+    public Message(Subject subject, User from, User to, String messageText)
+    {
+        this.subject        = subject;
+        this.from           = from;
+        this.to             = to;
+        this.messageText    = messageText;
+    } 
+
+    public void displayMessage()
+    {
+        String nameFrom = from.firstName;
+        String nameTo   = to.firstName;
+        System.out.println(... + &quot; says \&quot;&quot;+messageText + &quot;\&quot; to &quot; + nameTo);
+    }
+
+    public void displayMessageContent()
+    {
+        System.out.println(messageText);
+    }
+}
+</code></pre>
+
+<p><img alt="Figure 3: Displaying messages including message subject" src="img/12.png"></p>
+<p><strong><em>Task 6 User</em></strong></p>
+<p>Write a method in <strong>User</strong> class to display an array list of messages.</p>
+<ul>
+<li>Signature <em>public void displayMessages(ArrayList&lt;Message> messages)</em></li>
+<li>Hint: In this method, invoke the existing <em>Message</em> method <em>displayMessage</em> for each element in the list</li>
+<li>Test the method by invoking <em>TestMessaging displayMessageList()</em>.</li>
+<li>Sample out depicted in Figure 4</li>
+</ul>
+<p><img alt="Figure 4: Sample output displayMessageList()" src="img/13.png"></p>
+<p><strong><em>Task 7 User Message</em></strong></p>
+<p>Write a method to display an array list of messages filtered by subject:</p>
+<ul>
+<li>Signature <em>public void displayMessages(Subject subject, ArrayList&lt;Message> messages)</em></li>
+<li>Hint: Invoke the existing <em>Message</em> method <em>displayMessage</em> for each element in the list</li>
+<li>Test the method by invoking <em>TestMessaging displayMessageList(Subject subject)</em>.</li>
+<li>Sample out depicted in Figure 5</li>
+</ul>
+<p><img alt="Figure 5: Sample output displayMessageList()" src="img/14.png"></p>
+<p><strong><em>Task 8 MessageSort Message array</em></strong></p>
+<p>Write a method in MessageSort to sort an array of messages.</p>
+<ul>
+<li>Signature: <em>public static void sortMessages(Message[] messages)</em></li>
+<li>Use the sorting algorithm developed in this assignment to sort the list</li>
+<li>Test your code by invoking <em>sortArrayMessages</em> on an instance of <em>TestMessaging</em> class provided (Figure 6)</li>
+</ul>
+<p><img alt="Figure 6: Sort array messages" src="img/08.png"></p>
+<p><strong><em>Task 9 MessageSort Message ArrayList</em></strong></p>
+<p>Write a method in MessageSort to sort an ArrayList of messages.</p>
+<ul>
+<li>Signature: <em>public void sortMessages(ArrayList&lt;Message> messages)</em></li>
+<li>Use the sorting algorithm developed in this assignment to sort the list</li>
+<li>Test your code by invoking <em>sortArrayListMessages</em> on an instance of <em>TestMessaging</em> class provided (Figure 7)</li>
+</ul>
+<p><img alt="Figure 7: Sort list messages" src="img/09.png"></p>
+	  </section>
+  <br>  
+  <div class="ui fixed bottom borderless menu">'
+    <div class="ui small item"> 
+    <p id="footertext">
+    Prepared by  John Fitzgerald (johnjfitzgerald@outlook.com). Except where otherwise noted, this content is licensed under a  
+     <a  href="http://creativecommons.org/licenses/by-nc/4.0/" title="External link to http://creativecommons.org/licenses/by-nc/4.0/" 
+       target="_blank">Creative Commons Attribution-NonCommercial 4.0 License
+     </a>
+     </p>
+    </div>
+  </div>   
+    
+  </body>
+ </html>
